@@ -20,4 +20,11 @@ public class ReplaceVowelsTest {
     String test = "-pple";
     assertEquals(test, testString.vowelRemover("apple"));
   }
+
+  @Test
+  public void ReplaceVowels_ReplaceVowelsWithDashes_true() {
+    ReplaceVowels testString = new ReplaceVowels();
+    String test = "-ppl-";
+    assertEquals(test, testString.vowelRemover("apple"));
+  }
 }
