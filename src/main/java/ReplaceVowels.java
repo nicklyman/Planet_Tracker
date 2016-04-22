@@ -5,8 +5,6 @@ public class ReplaceVowels {
 
   public static String vowelRemover(String sentence){
 
-    String newSentence = sentence.toLowerCase();
-
     ArrayList<String> vowels = new ArrayList<String>();
     vowels.add("a");
     vowels.add("e");
@@ -14,6 +12,7 @@ public class ReplaceVowels {
     vowels.add("o");
     vowels.add("u");
 
+    String newSentence = sentence.toLowerCase();
     String[] sentenceArray = newSentence.split("");
 
     for(String letter : sentenceArray){
@@ -22,7 +21,7 @@ public class ReplaceVowels {
         sentence = sentence.replace(letter.toUpperCase(), "-");
       }
     }
-
+    
     return sentence;
   }
 
