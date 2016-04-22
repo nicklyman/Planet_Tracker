@@ -24,7 +24,7 @@ public class AppTest extends FluentTest {
   }
 
   @Test
-  public void isALeapYear() {
+  public void VowelsRemoved() {
     goTo("http://localhost:4567");
     fill("#vowelGame").with("Epicodus");
     submit("button");

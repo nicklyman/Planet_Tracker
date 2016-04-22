@@ -1,13 +1,13 @@
+#longWord {
+  width: 1500px;
+}
+
 .gameOutput {
   font-size: 14pt;
   padding-top: 50px;
 }
 
-#longWord {
-  width: 1500px;
-}
-
-body {
+.container {
   text-align: center;
 }
 

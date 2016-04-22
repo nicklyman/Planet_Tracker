@@ -18,6 +18,7 @@ public class App {
       HashMap model = new HashMap();
 
       model.put("template", "templates/home.vtl");
+      
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
@@ -29,6 +30,7 @@ public class App {
       model.put("userInput", userInput);
       model.put("gameString", newReplace.vowelRemover(userInput));
       model.put("template", "templates/results.vtl");
+
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
