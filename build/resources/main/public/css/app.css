@@ -1,14 +1,18 @@
-#gameOutput {
+.gameOutput {
   font-size: 14pt;
   padding-top: 50px;
 }
 
-.container {
+#longWord {
+  width: 1500px;
+}
+
+body {
   text-align: center;
 }
 
 .letters {
-  margin: 0px 10px 0px 10px;
+  margin: 10px 10px 10px 10px;
   border: solid 1px;
   padding: 15px;
   font-weight: bold;
@@ -16,4 +20,8 @@
 
 .userInputValue {
   display: none;
+}
+
+.boxBackground {
+  background-color: #E6E6FA;
 }
