@@ -17,8 +17,8 @@ public class ReplaceVowelsTest {
   @Test
   public void ReplaceVowels_ReplaceAWithDash_true() {
     ReplaceVowels testString = new ReplaceVowels();
-    String test = "-pple";
-    assertEquals(test, testString.vowelRemover("apple"));
+    String test = "-pp";
+    assertEquals(test, testString.vowelRemover("app"));
   }
 
   @Test

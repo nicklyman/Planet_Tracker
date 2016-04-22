@@ -5,9 +5,22 @@ public class ReplaceVowels {
 
   public static String vowelRemover(String sentence){
 
-    String newSentence = sentence.replace("a", "-");
+    ArrayList<String> vowels = new ArrayList<String>();
+    vowels.add("a");
+    vowels.add("e");
+    vowels.add("i");
+    vowels.add("o");
+    vowels.add("u");
 
-    return newSentence;
+    String[] sentenceArray = sentence.split("");
+
+    for(String letter : sentenceArray){
+      if(vowels.indexOf(letter) >= 0){
+        sentence = sentence.replace(letter, "-");
+      }
+    }
+
+    return sentence;
   }
 
 }
