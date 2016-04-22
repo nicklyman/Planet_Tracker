@@ -17,8 +17,8 @@ public class ReplaceVowelsTest {
   @Test
   public void ReplaceVowels_ReplaceAWithDash_true() {
     ReplaceVowels testString = new ReplaceVowels();
-    String test = "-pp";
-    assertEquals(test, testString.vowelRemover("app"));
+    String test = "wh-t";
+    assertEquals(test, testString.vowelRemover("what"));
   }
 
   @Test
@@ -26,5 +26,12 @@ public class ReplaceVowelsTest {
     ReplaceVowels testString = new ReplaceVowels();
     String test = "-ppl-";
     assertEquals(test, testString.vowelRemover("apple"));
+  }
+
+  @Test
+  public void ReplaceVowels_KeepCaseWhenReplacingVowels_true() {
+    ReplaceVowels testString = new ReplaceVowels();
+    String test = "-p-c-d-s";
+    assertEquals(test, testString.vowelRemover("Epicodus"));
   }
 }

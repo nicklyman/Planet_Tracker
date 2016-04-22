@@ -5,6 +5,7 @@ public class ReplaceVowels {
 
   public static String vowelRemover(String sentence){
 
+
     ArrayList<String> vowels = new ArrayList<String>();
     vowels.add("a");
     vowels.add("e");
