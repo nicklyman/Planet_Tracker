@@ -1,7 +1,5 @@
 # ReplaceVowels_JavaProject
 
-##[Click Here](http://patmwells.github.io/ReplaceVowels_JavaProject/) to see the Vowels Game website
-
 #### _A website that is designed to allow the user to input a word, phrase or sentence. The website then returns the user's input with all of the vowels removed_
 
 #### By **Patrick Wells**
@@ -19,9 +17,11 @@ Once all of the dashed boxes have been filled the word is complete and the game 
 
 * Clone this repository
 * Create a repository on GitHub in which to store the cloned repository
-* make the desired changes to the personal information within the index.html file
-* commit the changes and push the file to the gh-pages branch of the desired GitHub repository
-* Navigate to the webpage using the following URL address format your-username.github.io/ReplaceVowels_JavaProject
+* Commit any changes and push the file to the gh-pages branch of the desired GitHub repository
+* Use the terminal and command line to navigate to the project folder.
+* Run gradle using the "gradle run" command.
+* In a web browser input the following URL into the URL address bar: "localhost:4567" to navigate to the homepage of the game.
+* Follow the directions on the homepage to play the game.
 
 
 ## Support and contact details
