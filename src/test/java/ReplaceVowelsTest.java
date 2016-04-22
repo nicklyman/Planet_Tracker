@@ -13,4 +13,11 @@ public class ReplaceVowelsTest {
     String test = testString.vowelRemover("hello");
     assertEquals(true,  test instanceof String);
   }
+
+  @Test
+  public void ReplaceVowels_ReplaceAWithDash_true() {
+    ReplaceVowels testString = new ReplaceVowels();
+    String test = "-pple";
+    assertEquals(test, testString.vowelRemover("apple"));
+  }
 }
