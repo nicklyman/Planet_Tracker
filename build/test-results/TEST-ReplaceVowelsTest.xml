@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ReplaceVowelsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2016-04-22T15:35:39" hostname="DESKTOP-NEF4TT2" time="0.013">
+  <properties/>
+  <testcase name="ReplaceVowels_ReturnString_true" classname="ReplaceVowelsTest" time="0.013"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

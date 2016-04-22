@@ -9,6 +9,8 @@ public class ReplaceVowelsTest {
 
   @Test
   public void ReplaceVowels_ReturnString_true() {
-
+    ReplaceVowels testString = new ReplaceVowels();
+    String test = testString.vowelRemover("hello");
+    assertEquals(true,  test instanceof String);
   }
 }
