@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="AppTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2016-04-22T17:15:36" hostname="DESKTOP-NEF4TT2" time="2.606">
+  <properties/>
+  <testcase name="isALeapYear" classname="AppTest" time="2.397"/>
+  <testcase name="rootTest" classname="AppTest" time="0.1"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[[Thread-4] INFO org.eclipse.jetty.util.log - Logging initialized @4592ms
+[Thread-4] INFO spark.webserver.JettySparkServer - == Spark has ignited ...
+[Thread-4] INFO spark.webserver.JettySparkServer - >> Listening on 0.0.0.0:4567
+[Thread-4] INFO org.eclipse.jetty.server.Server - jetty-9.3.2.v20150730
+[Thread-4] INFO org.eclipse.jetty.server.ServerConnector - Started ServerConnector@44316a88{HTTP/1.1,[http/1.1]}{0.0.0.0:4567}
+[Thread-4] INFO org.eclipse.jetty.server.Server - Started @5664ms
+[Test worker] INFO spark.webserver.JettySparkServer - >>> Spark shutting down ...
+[Test worker] INFO org.eclipse.jetty.server.ServerConnector - Stopped ServerConnector@44316a88{HTTP/1.1,[http/1.1]}{0.0.0.0:4567}
+[Test worker] INFO spark.webserver.JettySparkServer - done
+]]></system-err>
+</testsuite>

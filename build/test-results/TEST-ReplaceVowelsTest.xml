@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ReplaceVowelsTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2016-04-22T16:38:11" hostname="DESKTOP-NEF4TT2" time="0.027">
+<testsuite name="ReplaceVowelsTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2016-04-22T17:15:39" hostname="DESKTOP-NEF4TT2" time="0.051">
   <properties/>
-  <testcase name="ReplaceVowels_ReplaceVowelsWithDashes_true" classname="ReplaceVowelsTest" time="0.013"/>
-  <testcase name="ReplaceVowels_ReturnString_true" classname="ReplaceVowelsTest" time="0.003"/>
+  <testcase name="ReplaceVowels_ReplaceVowelsWithDashes_true" classname="ReplaceVowelsTest" time="0.002"/>
+  <testcase name="ReplaceVowels_ReturnString_true" classname="ReplaceVowelsTest" time="0.011"/>
   <testcase name="ReplaceVowels_ReplaceAWithDash_true" classname="ReplaceVowelsTest" time="0.002"/>
-  <testcase name="ReplaceVowels_KeepCaseWhenReplacingVowels_true" classname="ReplaceVowelsTest" time="0.004"/>
+  <testcase name="ReplaceVowels_KeepCaseWhenReplacingVowels_true" classname="ReplaceVowelsTest" time="0.028"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
