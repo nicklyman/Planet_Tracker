@@ -7,7 +7,7 @@ public class ReplaceVowels {
 
     String newSentence = sentence.replace("a", "-");
 
-    return sentence;
+    return newSentence;
   }
 
 }
