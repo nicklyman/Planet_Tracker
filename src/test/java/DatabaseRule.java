@@ -19,7 +19,7 @@ public class DatabaseRule extends ExternalResource {
       String deleteJupiterQuery = "DELETE FROM jupiter *;";
       String deleteMercuryQuery = "DELETE FROM mercury *;";
       String deleteUranusQuery = "DELETE FROM uranus *;";
-      // String deleteUsersQuery = "DELETE FROM users *;";
+      String deleteUsersQuery = "DELETE FROM users *;";
       // con.createQuery(deleteMarsQuery).executeUpdate();
       con.createQuery(deleteVenusQuery).executeUpdate();
       con.createQuery(deleteSaturnQuery).executeUpdate();
@@ -28,7 +28,7 @@ public class DatabaseRule extends ExternalResource {
       con.createQuery(deleteJupiterQuery).executeUpdate();
       con.createQuery(deleteMercuryQuery).executeUpdate();
       con.createQuery(deleteUranusQuery).executeUpdate();
-      // con.createQuery(deleteUsersQuery).executeUpdate();
+      con.createQuery(deleteUsersQuery).executeUpdate();
     }
   }
 

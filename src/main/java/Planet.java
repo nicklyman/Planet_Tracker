@@ -20,9 +20,17 @@ public class Planet {
     return date_time;
   }
 
-  public Planet find(User user){
+  public double getAzimuth() {
+    return azimuth;
+  }
+
+  public double getElevation() {
+    return elevation;
+  }
+
+  public static Planet find(User user, String planetName){
     try(Connection con = DB.sql2o.open()){
-      String sql = "SELECT * FROM " + this.getName() + " WHERE date_time = :user_time";
+      String sql = "SELECT * FROM " + planetName + " WHERE date_time = :user_time";
       return con.createQuery(sql).addParameter("user_time", user.getUserTime()).executeAndFetchFirst(Planet.class);
     }
   }

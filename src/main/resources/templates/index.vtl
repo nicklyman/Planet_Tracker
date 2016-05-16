@@ -85,3 +85,7 @@
       <button type="submit" name="makeUser" class="btn btn-default black">See What Planets Are In The Sky!!!</button>
     </div>
   </form>
+
+  #foreach($user in $users)
+    <li><a href="/users/$user.getId()">$user.getName()</a></li>
+  #end
