@@ -17,6 +17,7 @@ public class App {
 
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
+
       model.put("users", User.all());
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
@@ -32,12 +33,36 @@ public class App {
       String time = request.queryParams("time");
 
       User user = new User(userName, userEmail, userTelephone);
+      user.save();
       user.setTime(month, day, year, time);
+
+
       response.redirect("/");
       return null;
     });
 
-    
+    get("users/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      User user = User.find(Integer.parseInt(request.params("id")));
+
+      String[] planetNames = {"mars", "venus", "neptune", "uranus", "mercury", "jupiter", "saturn", "pluto"};
+      ArrayList<Planet> planets = new ArrayList<Planet>();
+
+      Planet foundPlanet = Planet.find(user, "mars");
+      planets.add(foundPlanet);
+
+      // for(String planetName : planetNames) {
+      //   Planet foundPlanet = Planet.find(user, planetName);
+      //   planets.add(foundPlanet);
+      // }
+
+      model.put("user", user);
+      model.put("planets", planets);
+      model.put("template", "templates/user.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+
   }
 
 }

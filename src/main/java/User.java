@@ -1,4 +1,5 @@
 import org.sql2o.*;
+import java.util.List;
 
 public class User{
   private String name;
@@ -15,6 +16,14 @@ public class User{
     this.telephone = telephone;
   }
 
+  public String getName() {
+    return name;
+  }
+
+  public int getId() {
+    return id;
+  }
+
   public void save() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO users (name, email, telephone) VALUES (:name, :email, :telephone)";
@@ -22,17 +31,17 @@ public class User{
     }
   }
 
-  public static List<User> all() {
-    try(Connection con = DB.sql20.open()) {
-      String sql = "SELECT * FROM users";
-      return con.createQuery(sql).executeAndFetch(User.class);
+  public static User find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM users WHERE id=:id";
+      return con.createQuery(sql).addParameter("id", id).executeAndFetchFirst(User.class);
     }
   }
 
-  public String getUserTime() {
+  public static List<User> all() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT user_time FROM users WHERE id = :id";
-      return con.createQuery(sql).addParameter("id", this.id).executeAndFetchFirst(String.class);
+      String sql = "SELECT * FROM users";
+      return con.createQuery(sql).executeAndFetch(User.class);
     }
   }
 
@@ -44,5 +53,10 @@ public class User{
     }
   }
 
-
+  public String getUserTime() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT user_time FROM users WHERE id = :id";
+      return con.createQuery(sql).addParameter("id", this.id).executeAndFetchFirst(String.class);
+    }
+  }
 }

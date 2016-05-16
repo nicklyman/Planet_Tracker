@@ -1,12 +1,12 @@
 <div class="jumbotron">
   <form action="/users" method="post">
     <label for="newUserName">Input Your Name</label>
-    <input type="text" name="newUserName">
+    <input id="newUserName" type="text" name="newUserName">
     <label for="userEmail">Input Your Email</label>
-    <input type="text" name="userEmail">
+    <input id="userEmail" type="text" name="userEmail">
     <label for="userTelephone">Input Your Telephone Number</label>
-    <input type="text" name="userTelephone">
-    <select name="month" required>
+    <input id="userTelephone" type="text" name="userTelephone">
+    <select id="userMonth" name="month" required>
       <option val="January">January</option>
       <option val="February">February</option>
       <option val="March">March</option>
@@ -21,7 +21,7 @@
       <option val="December">December</option>
     </select>
 
-    <select name="day" required>
+    <select id="userDay" name="day" required>
         <option val="1">1</option>
         <option val="2">2</option>
         <option val="3">3</option>
@@ -74,3 +74,7 @@
   </form>
 
 </div>
+
+#foreach($user in $users)
+  <li><a href="/users/$user.getId()">$user.getName()</a></li>
+#end

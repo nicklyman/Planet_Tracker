@@ -15,12 +15,48 @@ public class PlanetTest {
   }
 
   @Test
+  public void Planet_getName() {
+    Planet testPlanet = new Planet("mars");
+    assertEquals("mars", testPlanet.getName());
+  }
+
+  @Test
+  public void Planet_getPlanetTime() {
+    Planet testPlanet = new Planet("mars");
+    User testUser = new User("Pat", "pat@gmail.com", "1234567890");
+    testUser.save();
+    testUser.setTime("January", "1", "2016", "04:00");
+    Planet foundPlanet = Planet.find(testUser, "mars");
+    assertEquals("2016-January-1 04:00", foundPlanet.getPlanetTime());
+  }
+
+  @Test
+  public void Planet_getAzimuth() {
+    Planet testPlanet = new Planet("mars");
+    User testUser = new User("Pat", "pat@gmail.com", "1234567890");
+    testUser.save();
+    testUser.setTime("January", "1", "2016", "04:00");
+    Planet foundPlanet = Planet.find(testUser, "mars");
+    assertTrue(119.0357 == foundPlanet.getAzimuth());
+  }
+
+  @Test
+  public void Planet_getElevation() {
+    Planet testPlanet = new Planet("mars");
+    User testUser = new User("Pat", "pat@gmail.com", "1234567890");
+    testUser.save();
+    testUser.setTime("January", "1", "2016", "04:00");
+    Planet foundPlanet = Planet.find(testUser, "mars");
+    assertTrue(-2.4722 == foundPlanet.getElevation());
+  }
+
+  @Test
   public void Planet_FindTime() {
     Planet testPlanet = new Planet("mars");
     User newUser = new User("Pat", "pat@gmail.com", "1234567890");
     newUser.save();
-    newUser.setTime("May", "16", "2016", "04:00");
-    assertEquals(newUser.getUserTime(), testPlanet.find(newUser).getPlanetTime());
+    newUser.setTime("January", "1", "2016", "04:00");
+    assertEquals(newUser.getUserTime(), testPlanet.find(newUser, "mars").getPlanetTime());
   }
 
 }
