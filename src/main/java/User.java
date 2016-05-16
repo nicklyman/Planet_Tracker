@@ -1,4 +1,5 @@
 import org.sql2o.*;
+import java.util.List;
 
 public class User{
   private String name;
@@ -23,7 +24,7 @@ public class User{
   }
 
   public static List<User> all() {
-    try(Connection con = DB.sql20.open()) {
+    try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM users";
       return con.createQuery(sql).executeAndFetch(User.class);
     }

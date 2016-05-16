@@ -1,1 +1,29 @@
+.jumbotron{
+  margin-top: 0px;
+}
 
+.center{
+  text-align: center;
+}
+
+body{
+  color: white;
+  margin: auto;
+  background: url(../img/night2.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.black{
+  color: black;
+}
+
+.apply-font{
+  font-family: 'Lobster', cursive;
+}
+
+.btn{
+  border-radius: 10px;
+}
