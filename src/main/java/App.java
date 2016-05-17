@@ -32,7 +32,7 @@ public class App {
       String time = request.queryParams("time");
       User user = new User(userName, userEmail, userTelephone);
 
-      if(User.noCopiesInData(user) == 0){
+      if(User.noCopiesInData(userTelephone) == 0){
         user.save();
         user.setTime(month, day, year, time);
       }
@@ -46,24 +46,24 @@ public class App {
       String nameLogin = request.queryParams("nameLogin");
       String emailLogin = request.queryParams("emailLogin");
       String phoneLogin = request.queryParams("phoneLogin");
-      User newUser = new User(nameLogin, emailLogin, phoneLogin);
 
-      for(User user : User.all()) {
-        if(newUser.getPhone().equals(user.getPhone())){
-          User newerUser = User.find(user.getId());
-          model.put("user", newerUser);
-        }
+      int userExists = User.noCopiesInData(phoneLogin);
+      User newUser = new User("No User Information Available", "testemail", "testPhone");
+
+      if(userExists > 0){
+        newUser = User.find(userExists);
       }
 
       String[] planetNames = {"mars", "venus", "neptune", "uranus", "mercury", "jupiter", "saturn", "pluto"};
       ArrayList<Planet> planets = new ArrayList<Planet>();
 
       for(String planetName : planetNames) {
-        Planet foundPlanet = Planet.find(user, planetName);
+        Planet foundPlanet = Planet.find(newUser, planetName);
         if(foundPlanet != null){
           planets.add(foundPlanet);
         }
       }
+      model.put("user", newUser);
       model.put("planets", planets);
       model.put("template", "templates/user.vtl");
       return new ModelAndView(model, layout);

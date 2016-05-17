@@ -5,6 +5,8 @@ public class User{
   private String name;
   private String email;
   private String telephone;
+  private String telephone_carrier;
+  private String password;
   private double latitude;
   private double longitude;
   private String user_time;
@@ -26,6 +28,14 @@ public class User{
 
   public String getPhone(){
     return telephone;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public String getTelephoneCarrier() {
+    return telephone_carrier;
   }
 
 
@@ -50,11 +60,11 @@ public class User{
     }
   }
 
-  public static int noCopiesInData(User newUser){
+  public static int noCopiesInData(String phoneNumber){
     int counter = 0;
     for(User user : User.all()){
-      if (user.getPhone().equals(newUser.getPhone())){
-        counter ++;
+      if (user.getPhone().equals(phoneNumber)){
+        counter = user.getId();
       }
     }
     return counter;
