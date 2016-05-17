@@ -1,16 +1,16 @@
   <div class = "user center">
     <form action="/users" method="post">
-      <h3 class = "apply-font">Create a Profile</h3>
+      <h3 class = "apply-font font-shadow">Create a Profile</h3>
       <br>
-      <label for="newUserName">Input Your Name</label>
+      <label for="newUserName" class="font-shadow">Input Your Name:</label>
       <input type="text" name="newUserName" class="font-black" required>
       <br>
       <br>
-      <label for="userEmail">Input Your Email</label>
+      <label for="userEmail" class="font-shadow">Input Your Email:</label>
       <input type="text" name="userEmail" class="font-black" required>
       <br>
       <br>
-      <label for="userTelephone">Input Your Telephone Number</label>
+      <label for="userTelephone" class="font-shadow">Input Your Telephone Number:</label>
       <input type="text" name="userTelephone" class="font-black" required>
       <select name="userTelephoneCarrier" required class = "font-black">
         <option value="@txt.att.net">AT&T</option>
@@ -28,7 +28,7 @@
       </select>
       <br>
       <br>
-      <label for="month">Input the Date</label>
+      <label for="month" class="font-shadow">Input the Date:</label>
       <select name="month" required class = "font-black">
         <option value="Jan">January</option>
         <option value="Feb">February</option>
@@ -91,25 +91,25 @@
       </select>
       <br>
       <br>
-      <label for="time">Input time</label>
+      <label for="time" class="font-shadow">Input time:</label>
       <input type="text" name="time" class="font-black" placeholder="00:00">
       <br>
       <br>
       <button type="submit" name="makeUser" class="btn btn-default font-black">Submit</button>
   </form>
   <br>
-  <h3 class="apply-font">Login</h3>
+  <h3 class="apply-font font-shadow">Login</h3>
   <br>
-  <form action="/users" method="get">
-    <label for="nameLogin">Input Your Name:</label>
+  <form action="/usersLogin" method="post">
+    <label for="nameLogin" class="font-shadow">Input Your Name:</label>
     <input type="text" name="nameLogin" class="font-black">
     <br>
     <br>
-    <label for="emailLogin">Input Your Email:</label>
+    <label for="emailLogin" class="font-shadow">Input Your Email:</label>
     <input type="text" name="emailLogin" class="font-black">
     <br>
     <br>
-    <label for="phoneLogin">Input Your Telephone Number:</label>
+    <label for="phoneLogin" class="font-shadow">Input Your Telephone Number:</label>
     <input type="text" name="phoneLogin" class="font-black" placeholder="1234567890">
     <br>
     <br>

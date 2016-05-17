@@ -20,6 +20,10 @@ body{
   color: black;
 }
 
+.font-shadow{
+  text-shadow: -2px 2px 4px black;
+}
+
 .apply-font{
   font-family: 'Lobster', cursive;
 }
