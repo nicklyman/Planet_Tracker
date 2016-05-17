@@ -48,14 +48,12 @@ public class App {
       ArrayList<Planet> planets = new ArrayList<Planet>();
 
 
-
       for(String planetName : planetNames) {
         Planet foundPlanet = Planet.find(user, planetName);
         if(foundPlanet != null){
           planets.add(foundPlanet);
         }
       }
-
 
       model.put("user", user);
       model.put("planets", planets);
