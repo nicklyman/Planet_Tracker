@@ -28,10 +28,10 @@ public class Planet {
     return elevation;
   }
 
-  public static Planet find(User user, String planetName){
+  public static Planet find(String dateTime, String planetName){
     try(Connection con = DB.sql2o.open()){
       String sql = "SELECT * FROM " + planetName + " WHERE date_time = :user_time";
-      return con.createQuery(sql).addParameter("user_time", user.getUserTime()).executeAndFetchFirst(Planet.class);
+      return con.createQuery(sql).addParameter("user_time", dateTime).executeAndFetchFirst(Planet.class);
     }
   }
 
