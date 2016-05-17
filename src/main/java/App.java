@@ -68,7 +68,7 @@ public class App {
       ArrayList<Planet> planets = new ArrayList<Planet>();
 
       for(String planetName : planetNames) {
-        Planet foundPlanet = Planet.find(newUser.getUserTime(), planetName);
+        Planet foundPlanet = Planet.find(user.getUserTime(), planetName);
         if(foundPlanet != null){
           planets.add(foundPlanet);
         }
