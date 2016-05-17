@@ -11,6 +11,20 @@ import static spark.Spark.*;
 public class App {
 
   public static void main(String[] args) {
+    //--------------------------------------------------------------------------
+    //Messaging Service, uncomment when ready to begin automatic spam
+    /*
+    System.out.println("startup...");
+
+    //Create Message object
+    PlanetMessage myMessage = new PlanetMessage("planet.tracker123@gmail.com", args[0]);
+
+    //Messaging Service
+    System.out.println("initializing messaging service");
+    //sends PlanetMessage email every 1 minute
+    MessageService messageService = new MessageService(myMessage, Integer.valueOf(args[1]), 60);
+    */
+    //--------------------------------------------------------------------------
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
 
@@ -54,7 +68,7 @@ public class App {
       ArrayList<Planet> planets = new ArrayList<Planet>();
 
       for(String planetName : planetNames) {
-        Planet foundPlanet = Planet.find(user, planetName);
+        Planet foundPlanet = Planet.find(newUser.getUserTime(), planetName);
         if(foundPlanet != null){
           planets.add(foundPlanet);
         }
@@ -93,6 +107,26 @@ public class App {
     }, new VelocityTemplateEngine());
 
 
-  }
+    post("/adminPage", (request, response) -> {
+      String year = request.queryParams("year");
+      String month = request.queryParams("month");
+      String day = request.queryParams("day");
+      String time = request.queryParams("time");
+      String psw = request.queryParams("adminPassword");
 
+      if(psw.equals(args[0])) {
+        //Create Message object
+        PlanetMessage myMessage = new PlanetMessage("planet.tracker123@gmail.com", psw);
+        //Put together manual dateTime string
+        String dateTime = DateTime.convertUserInput(year, month, day, time);
+        //Messaging Service
+        System.out.println("initializing messaging service");
+        //send PlanetMessage email
+        myMessage.send(dateTime);
+      }
+      response.redirect("/adminPage");
+      return null;
+    });
+
+  }
 }
