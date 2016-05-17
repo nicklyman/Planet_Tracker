@@ -1,7 +1,6 @@
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Map;
-
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -38,11 +37,6 @@ public class App {
         user.setTime(month, day, year, time);
       }
 
-
-        // user.save();
-        // user.setTime(month, day, year, time);
-
-
       response.redirect("/");
       return null;
     });
@@ -63,13 +57,13 @@ public class App {
 
       String[] planetNames = {"mars", "venus", "neptune", "uranus", "mercury", "jupiter", "saturn", "pluto"};
       ArrayList<Planet> planets = new ArrayList<Planet>();
-      // Planet foundPlanet = Planet.find(newerUser, "mars");
-      // planets.add(foundPlanet);
-      // for(String planetName : planetNames) {
-      //   Planet foundPlanet = Planet.find(user, planetName);
-      //   planets.add(foundPlanet);
-      // }
-      model.put("users", User.all());
+
+      for(String planetName : planetNames) {
+        Planet foundPlanet = Planet.find(user, planetName);
+        if(foundPlanet != null){
+          planets.add(foundPlanet);
+        }
+      }
       model.put("planets", planets);
       model.put("template", "templates/user.vtl");
       return new ModelAndView(model, layout);
