@@ -3,83 +3,97 @@
       <h3 class = "apply-font">Create a Profile</h3>
       <br>
       <label for="newUserName">Input Your Name</label>
-      <input type="text" name="newUserName" class="black">
+      <input type="text" name="newUserName" class="black" required>
       <br>
       <br>
       <label for="userEmail">Input Your Email</label>
-      <input type="text" name="userEmail" class="black">
+      <input type="text" name="userEmail" class="black" required>
       <br>
       <br>
       <label for="userTelephone">Input Your Telephone Number</label>
-      <input type="text" name="userTelephone" class="black">
+      <input type="text" name="userTelephone" class="black" required>
+      <select name="userTelephoneCarrier" required class = "black">
+        <option value="@txt.att.net">AT&T</option>
+        <option value="@message.alltel.com">Alltel</option>
+        <option value="@myboostmobile.com">Boost mobile</option>
+        <option value="@sms.mycricket.com">Cricket</option>
+        <option value="@sms.edgewireless.com">Edge wireless</option>
+        <option value="@mymetropcs.com">Metro PCS</option>
+        <option value="@messaging.nextel.com">Nextel</option>
+        <option value="@messaging.sprintpcs.com">Sprint</option>
+        <option value="@tmomail.net">T-Mobile</option>
+        <option value="@email.uscc.net">US Cellular</option>
+        <option value="@vtext.com">Verizon</option>
+        <option value="@vmobl.com">Virgin Mobile</option>
+      </select>
       <br>
       <br>
       <label for="month">Input the Date</label>
       <select name="month" required class = "black">
-        <option val="January">January</option>
-        <option val="February">February</option>
-        <option val="March">March</option>
-        <option val="April">April</option>
-        <option val="May">May</option>
-        <option val="June">June</option>
-        <option val="July">July</option>
-        <option val="August">August</option>
-        <option val="September">September</option>
-        <option val="October">October</option>
-        <option val="November">November</option>
-        <option val="December">December</option>
+        <option value="Jan">January</option>
+        <option value="Feb">February</option>
+        <option value="Mar">March</option>
+        <option value="Apr">April</option>
+        <option value="May">May</option>
+        <option value="Jun">June</option>
+        <option value="Jul">July</option>
+        <option value="Aug">August</option>
+        <option value="Sep">September</option>
+        <option value="Oct">October</option>
+        <option value="Nov">November</option>
+        <option value="Dec">December</option>
       </select>
       <select name="day" required class = "black">
-          <option val="1">1</option>
-          <option val="2">2</option>
-          <option val="3">3</option>
-          <option val="4">4</option>
-          <option val="5">5</option>
-          <option val="6">6</option>
-          <option val="7">7</option>
-          <option val="8">8</option>
-          <option val="9">9</option>
-          <option val="10">10</option>
-          <option val="11">11</option>
-          <option val="12">12</option>
-          <option val="13">13</option>
-          <option val="14">14</option>
-          <option val="15">15</option>
-          <option val="16">16</option>
-          <option val="17">17</option>
-          <option val="18">18</option>
-          <option val="19">19</option>
-          <option val="20">20</option>
-          <option val="21">21</option>
-          <option val="22">22</option>
-          <option val="23">23</option>
-          <option val="24">24</option>
-          <option val="25">25</option>
-          <option val="26">26</option>
-          <option val="27">27</option>
-          <option val="28">28</option>
-          <option val="29">29</option>
-          <option val="30">30</option>
-          <option val="31">31</option>
+          <option value="01">1</option>
+          <option value="02">2</option>
+          <option value="03">3</option>
+          <option value="04">4</option>
+          <option value="05">5</option>
+          <option value="06">6</option>
+          <option value="07">7</option>
+          <option value="08">8</option>
+          <option value="09">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
       </select>
 
       <select name="year" required class = "black">
-          <option val="2016">2016</option>
-          <option val="2017">2017</option>
-          <option val="2018">2018</option>
-          <option val="2019">2019</option>
-          <option val="2020">2020</option>
-          <option val="2021">2021</option>
-          <option val="2022">2022</option>
-          <option val="2023">2023</option>
-          <option val="2024">2024</option>
-          <option val="2025">2025</option>
-          <option val="2026">2026</option>
+          <option value="2016">2016</option>
+          <option value="2017">2017</option>
+          <option value="2018">2018</option>
+          <option value="2019">2019</option>
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+          <option value="2022">2022</option>
+          <option value="2023">2023</option>
+          <option value="2024">2024</option>
+          <option value="2025">2025</option>
+          <option value="2026">2026</option>
       </select>
       <br>
       <br>
       <label for="time">Input time</label>
-      <input type="text" name="time" class="black" placeholder="00:00">
+      <input type="text" name="time" class="black" placeholder="00:00" required>
       <br>
       <br>
       <button type="submit" name="makeUser" class="btn btn-default black">See What Planets Are In The Sky!!!</button>

@@ -6,7 +6,7 @@ public class Planet {
     private String date_time;
     private double azimuth;
     private double elevation;
-    private int id;
+
 
   public Planet(String name){
     this.planet_name = name;
