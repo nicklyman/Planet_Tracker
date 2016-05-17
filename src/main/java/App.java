@@ -48,13 +48,11 @@ public class App {
       String[] planetNames = {"mars", "venus", "neptune", "uranus", "mercury", "jupiter", "saturn", "pluto"};
       ArrayList<Planet> planets = new ArrayList<Planet>();
 
-      Planet foundPlanet = Planet.find(user, "mars");
-      planets.add(foundPlanet);
 
-      // for(String planetName : planetNames) {
-      //   Planet foundPlanet = Planet.find(user, planetName);
-      //   planets.add(foundPlanet);
-      // }
+      for(String planetName : planetNames) {
+        Planet foundPlanet = Planet.find(user, planetName);
+        planets.add(foundPlanet);
+      }
 
       model.put("user", user);
       model.put("planets", planets);
