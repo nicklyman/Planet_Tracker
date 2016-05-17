@@ -50,6 +50,16 @@ public class User{
     }
   }
 
+  public static int noCopiesInData(User newUser){
+    int counter = 0;
+    for(User user : User.all()){
+      if (user.getPhone().equals(newUser.getPhone())){
+        counter ++;
+      }
+    }
+    return counter;
+  }
+
   public void setTime(String month, String day, String year, String time) {
     String userTime = year + "-" + month + "-" + day + " " + time;
     try(Connection con = DB.sql2o.open()) {

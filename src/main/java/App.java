@@ -32,19 +32,16 @@ public class App {
       String year = request.queryParams("year");
       String time = request.queryParams("time");
       User user = new User(userName, userEmail, userTelephone);
-      String userPhone = user.getPhone();
-      ArrayList<User> userList = new ArrayList<User>();
 
-      for(User eachUser : User.all()) {
-        userList.add(eachUser);
-        }
-
-      for(User newuser : userList) {
-        if (!(userPhone.equals(newuser.getPhone()))){
+      if(User.noCopiesInData(user) == 0){
         user.save();
         user.setTime(month, day, year, time);
-        }
       }
+
+
+        // user.save();
+        // user.setTime(month, day, year, time);
+
 
       response.redirect("/");
       return null;
