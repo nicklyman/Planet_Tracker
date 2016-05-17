@@ -1,0 +1,35 @@
+<div class="center">
+<h3 class = "apply-font">Create a Profile</h3>
+<br>
+<form action="/users" method="post">
+  <label for="newUserName" class="font-shadow">Input Your Name</label>
+  <input type="text" name="newUserName" class="font-black" required>
+  <br>
+  <br>
+  <label for="userEmail" class="font-shadow">Input Your Email</label>
+  <input type="text" name="userEmail" class="font-black" required>
+  <br>
+  <br>
+  <label for="userTelephone" class="font-shadow">Input Your Telephone Number</label>
+  <input type="text" name="userTelephone" class="font-black" required>
+  <select name="userTelephoneCarrier" required class = "font-black">
+    <option value="@txt.att.net">AT&T</option>
+    <option value="@message.alltel.com">Alltel</option>
+    <option value="@myboostmobile.com">Boost mobile</option>
+    <option value="@sms.mycricket.com">Cricket</option>
+    <option value="@sms.edgewireless.com">Edge wireless</option>
+    <option value="@mymetropcs.com">Metro PCS</option>
+    <option value="@messaging.nextel.com">Nextel</option>
+    <option value="@messaging.sprintpcs.com">Sprint</option>
+    <option value="@tmomail.net">T-Mobile</option>
+    <option value="@email.uscc.net">US Cellular</option>
+    <option value="@vtext.com">Verizon</option>
+    <option value="@vmobl.com">Virgin Mobile</option>
+  </select>
+  <br>
+  <br>
+  <button type="submit" class="btn btn-default">Create Profile</button>
+</form>
+<br>
+<a href="/" class="btn btn-default">Go Back to LogIn</a>
+</div>
