@@ -1,7 +1,18 @@
-$user.getName()
+<div class="center">
+#if ($user)
+  <h3 class="font">$user.getName()</h3>
+#else
+  <br>
+  <br>
+  <br>
+  <br>
+  <h1>Error: Not Found</h1>
+#end
+
 #foreach($planet in $planets)
   <li>$planet.getName()</li>
   <li>$planet.getAzimuth()</li>
   <li>$planet.getElevation()</li>
   <li>$planet.getPlanetTime()</li>
 #end
+</div>

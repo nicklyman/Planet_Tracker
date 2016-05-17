@@ -31,38 +31,51 @@ public class App {
       String day = request.queryParams("day");
       String year = request.queryParams("year");
       String time = request.queryParams("time");
-
       User user = new User(userName, userEmail, userTelephone);
-      user.save();
-      user.setTime(month, day, year, time);
+      String userPhone = user.getPhone();
+      ArrayList<User> userList = new ArrayList<User>();
 
+      for(User eachUser : User.all()) {
+        userList.add(eachUser);
+        }
+
+      for(User newuser : userList) {
+        if (!(userPhone.equals(newuser.getPhone()))){
+        user.save();
+        user.setTime(month, day, year, time);
+        }
+      }
 
       response.redirect("/");
       return null;
     });
 
-    get("users/:id", (request, response) -> {
+    get("/users", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      User user = User.find(Integer.parseInt(request.params("id")));
+      String nameLogin = request.queryParams("nameLogin");
+      String emailLogin = request.queryParams("emailLogin");
+      String phoneLogin = request.queryParams("phoneLogin");
+      User newUser = new User(nameLogin, emailLogin, phoneLogin);
+
+      for(User user : User.all()) {
+        if(newUser.getPhone().equals(user.getPhone())){
+          User newerUser = User.find(user.getId());
+          model.put("user", newerUser);
+        }
+      }
 
       String[] planetNames = {"mars", "venus", "neptune", "uranus", "mercury", "jupiter", "saturn", "pluto"};
       ArrayList<Planet> planets = new ArrayList<Planet>();
-
-      Planet foundPlanet = Planet.find(user, "mars");
-      planets.add(foundPlanet);
-
+      // Planet foundPlanet = Planet.find(newerUser, "mars");
+      // planets.add(foundPlanet);
       // for(String planetName : planetNames) {
       //   Planet foundPlanet = Planet.find(user, planetName);
       //   planets.add(foundPlanet);
       // }
-
-      model.put("user", user);
+      model.put("users", User.all());
       model.put("planets", planets);
       model.put("template", "templates/user.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
-
-
   }
-
 }

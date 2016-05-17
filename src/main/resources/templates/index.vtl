@@ -1,21 +1,21 @@
-  <form action="/users" method="post">
-    <div class = "user center">
+  <div class = "user center">
+    <form action="/users" method="post">
       <h3 class = "apply-font">Create a Profile</h3>
       <br>
       <label for="newUserName">Input Your Name</label>
-      <input type="text" name="newUserName" class="black">
+      <input type="text" name="newUserName" class="black" required>
       <br>
       <br>
       <label for="userEmail">Input Your Email</label>
-      <input type="text" name="userEmail" class="black">
+      <input type="text" name="userEmail" class="black" required>
       <br>
       <br>
       <label for="userTelephone">Input Your Telephone Number</label>
-      <input type="text" name="userTelephone" class="black">
+      <input type="text" name="userTelephone" class="black" placeholder="1234567890" required >
       <br>
       <br>
       <label for="month">Input the Date</label>
-      <select name="month" required class = "black">
+      <select name="month" class = "black" required>
         <option val="January">January</option>
         <option val="February">February</option>
         <option val="March">March</option>
@@ -29,7 +29,7 @@
         <option val="November">November</option>
         <option val="December">December</option>
       </select>
-      <select name="day" required class = "black">
+      <select name="day" class = "black" required>
           <option val="1">1</option>
           <option val="2">2</option>
           <option val="3">3</option>
@@ -63,7 +63,7 @@
           <option val="31">31</option>
       </select>
 
-      <select name="year" required class = "black">
+      <select name="year" class = "black" required>
           <option val="2016">2016</option>
           <option val="2017">2017</option>
           <option val="2018">2018</option>
@@ -82,10 +82,29 @@
       <input type="text" name="time" class="black" placeholder="00:00">
       <br>
       <br>
-      <button type="submit" name="makeUser" class="btn btn-default black">See What Planets Are In The Sky!!!</button>
-    </div>
+      <button type="submit" name="makeUser" class="btn btn-default black">Submit</button>
   </form>
+<br>
+  <h3 class="apply-font">Login</h3>
+  <br>
+  <form action="/users" method="get">
+    <label for="nameLogin">Input Your Name:</label>
+    <input type="text" name="nameLogin" class="black">
+    <br>
+    <br>
+    <label for="emailLogin">Input Your Email:</label>
+    <input type="text" name="emailLogin" class="black">
+    <br>
+    <br>
+    <label for="phoneLogin">Input Your Telephone Number:</label>
+    <input type="text" name="phoneLogin" class="black" placeholder="1234567890">
+    <br>
+    <br>
+    <button type="submit" name="loginUser" class="btn btn-default black">Login</button>
+  </form>
+</div>
 
-  #foreach($user in $users)
+
+  <!-- #foreach($user in $users)
     <li><a href="/users/$user.getId()">$user.getName()</a></li>
-  #end
+  #end -->

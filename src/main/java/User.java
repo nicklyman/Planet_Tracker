@@ -16,13 +16,18 @@ public class User{
     this.telephone = telephone;
   }
 
-  public String getName() {
+  public String getName(){
     return name;
   }
 
   public int getId() {
     return id;
   }
+
+  public String getPhone(){
+    return telephone;
+  }
+
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
@@ -57,6 +62,15 @@ public class User{
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT user_time FROM users WHERE id = :id";
       return con.createQuery(sql).addParameter("id", this.id).executeAndFetchFirst(String.class);
+    }
+  }
+
+  public void delete() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM users WHERE id = :id";
+      con.createQuery(sql)
+      .addParameter("id", this.id)
+      .executeUpdate();
     }
   }
 }
