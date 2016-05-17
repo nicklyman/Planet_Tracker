@@ -41,7 +41,7 @@ public class App {
       return null;
     });
 
-    get("/users", (request, response) -> {
+    post("/usersLogin", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       String nameLogin = request.queryParams("nameLogin");
       String emailLogin = request.queryParams("emailLogin");
@@ -68,5 +68,14 @@ public class App {
       model.put("template", "templates/user.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    get("/adminPage", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/adminPage.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+
   }
+
 }
