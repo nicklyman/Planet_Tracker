@@ -77,7 +77,6 @@ public class App {
     }, new VelocityTemplateEngine());
 
     post("/users", (request, response) -> {
-      String newUserName = request.queryParams("newName");
       String userEmail = request.queryParams("userEmail");
       String userTelephone = request.queryParams("userTelephone");
       String userTelephoneCarrier = request.queryParams("userTelephoneCarrier");
@@ -85,7 +84,7 @@ public class App {
       String userPassword = request.queryParams("userPassword");
 
 
-      User user = new User(userName, userEmail, userTelephone, userTelephoneCarrier, userName, userPassword);
+      User user = new User(userEmail, userTelephone, userTelephoneCarrier, userName, userPassword);
       int copyFinder = User.noCopiesInData(user);
       if(copyFinder == 0){
         user.save();

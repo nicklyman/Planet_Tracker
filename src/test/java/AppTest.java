@@ -1,13 +1,10 @@
+
+import org.sql2o.*;
 import org.fluentlenium.adapter.FluentTest;
-import org.junit.ClassRule;
-import org.junit.Test;
+import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-import org.sql2o.*;
-import org.junit.*;
-import static org.junit.Assert.*;
-import java.util.List;
-
+import static org.fluentlenium.core.filter.FilterConstructor.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class AppTest extends FluentTest {
@@ -28,15 +25,18 @@ public class AppTest extends FluentTest {
   @Test
   public void rootTest() {
     goTo("http://localhost:4567/");
-    assertThat(pageSource()).contains("See What Planets Are In The Sky!!!");
+    assertThat(pageSource()).contains("Login");
   }
 
   @Test
   public void MakeUser() {
-    goTo("http://localhost:4567");
-    fill("#newUserName").with("Patrick");
+    goTo("http://localhost:4567/");
+    click("a", withText("Make a Profile"));
     fill("#userEmail").with("p@gmail.com");
     fill("#userTelephone").with("1234567890");
+    click("option", withText("Verizon"));
+    fill("#newUserName").with("PatMWells");
+    fill("#userPassword").with("hello");
     submit("button");
     assertThat(pageSource()).contains("Patrick");
   }
