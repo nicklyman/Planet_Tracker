@@ -1,7 +1,6 @@
 <div class="center">
   #if ($user)
-    <h3 class="apply-font font-shadow">$user.getUserName()</h3>
-  <br>
+    <h2 class="apply-font font-shadow">$user.getUserName()</h2>
 
   <form action="/userDateTime/$user.getId()" method="post">
     <label for="month" class="font-shadow">Input the Date</label>
@@ -93,5 +92,7 @@
     <br>
     <br>
   #end
+    <br>
   <a href="/" class="btn btn-default">Go Back to LogIn</a>
 </div>
+<br>
