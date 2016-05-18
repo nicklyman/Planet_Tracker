@@ -35,9 +35,9 @@ public class PlanetTest {
     Planet testPlanet = new Planet("mars");
     User testUser = new User("p@gmail.com", "1234567890", "Verizon", "PatMWells", "hello");
     testUser.save();
-    testUser.setTime("January", "1", "2016", "04:00");
+    testUser.setTime("Jun", "02", "2016", "04:00");
     Planet foundPlanet = Planet.find(testUser.getUserTime(), "mars");
-    assertTrue(119.0357 == foundPlanet.getAzimuth());
+    assertTrue(136.0883 == foundPlanet.getAzimuth());
   }
 
   @Test
@@ -45,9 +45,9 @@ public class PlanetTest {
     Planet testPlanet = new Planet("mars");
     User testUser = new User("p@gmail.com", "1234567890", "Verizon", "PatMWells", "hello");
     testUser.save();
-    testUser.setTime("January", "1", "2016", "04:00");
+    testUser.setTime("Jun", "02", "2016", "04:00");
     Planet foundPlanet = Planet.find(testUser.getUserTime(), "mars");
-    assertTrue(-2.4722 == foundPlanet.getElevation());
+    assertTrue(10.6238 == foundPlanet.getElevation());
   }
 
   @Test
@@ -55,7 +55,7 @@ public class PlanetTest {
     Planet testPlanet = new Planet("mars");
     User newUser = new User("p@gmail.com", "1234567890", "Verizon", "PatMWells", "hello");
     newUser.save();
-    newUser.setTime("January", "1", "2016", "04:00");
+    newUser.setTime("Nov", "12", "2016", "01:00");
     assertEquals(newUser.getUserTime(), testPlanet.find(newUser.getUserTime(), "mars").getPlanetTime());
   }
 

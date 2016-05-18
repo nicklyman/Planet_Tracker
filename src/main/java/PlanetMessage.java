@@ -18,6 +18,39 @@ public class PlanetMessage {
   public void send(String dateTime) {
     System.out.println("Messaging users for time: " + dateTime);
 
+    String messageToSend = textMessageBuilder(dateTime);
+    System.out.println("Message:\n" + messageToSend);
+
+    //loop through users database and send messages
+    List<User> myUsers = User.all();
+    List<String> myAddresses = new ArrayList<String>();
+    for(User user : myUsers) {
+      String userAddress = user.getPhone() + user.getTelephoneCarrier();
+      myAddresses.add(userAddress);
+    }
+
+    this.email.sendTextMessages(messageToSend, myAddresses);
+  }
+
+  //method to send to a single user, for current system time
+  public void sendToSingleUser(User user) {
+    DateTime presentTime = new DateTime(System.currentTimeMillis());
+    this.sendToSingleUser(user, presentTime.getSimpleDateTimeRoundedDown());
+  }
+
+  //method to send to a single user, for specific system time
+  public void sendToSingleUser(User user, String dateTime) {
+    System.out.println("Messaging user " + user.getName() + " for time: " + dateTime);
+
+    String messageToSend = textMessageBuilder(dateTime);
+    System.out.println("Message:\n" + messageToSend);
+
+    String userAddress = user.getPhone() + user.getTelephoneCarrier();
+    this.email.sendSingleTextMessage(messageToSend, userAddress);
+  }
+
+
+  private String textMessageBuilder(String dateTime) {
     String[] planetNames = {"mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto"};
     ArrayList<Planet> myPlanets = new ArrayList<Planet>();
 
@@ -35,13 +68,10 @@ public class PlanetMessage {
       messageToSend += "\n" + planet.getName().substring(0,1).toUpperCase() + planet.getName().substring(1) + " is visible: " + "\nAzimuth: " + planet.getAzimuth() + "°\nElevation: " + planet.getElevation() + "°\n";
     }
 
-    //loop through users database and send messages
-    List<User> myUsers = User.all();
-    for(User user : myUsers) {
-      //get user address from database
-      String userAddress = user.getPhone() + user.getTelephoneCarrier();
-      this.email.sendTextMessage(messageToSend, userAddress);
+    if (messageToSend.equals(dateTime)) {
+      return null;
+    } else {
+      return messageToSend;
     }
-
   }
 }

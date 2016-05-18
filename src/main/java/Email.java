@@ -14,25 +14,25 @@ public class Email {
   }
 
 
-  public void sendMailMessage(String text, String emailTo){
+  public void sendSingleMailMessage(String text, String emailTo){
     try {
-    SimpleEmail email = new SimpleEmail();
-    email.setHostName("smtp.gmail.com");
-    email.setSmtpPort(465);
-    email.setAuthenticator(new DefaultAuthenticator(this.fromEmailAddress, this.fromEmailPassword));
-    email.setSSLOnConnect(true);
-    email.setFrom(this.fromEmailAddress, "Planet Tracker");
-    email.setSubject("Planet Tracker email");
-    email.setMsg(text);
-    email.addTo(emailTo);
-    // email.setDebug(true);
-    email.send();
+      SimpleEmail email = new SimpleEmail();
+      email.setHostName("smtp.gmail.com");
+      email.setSmtpPort(465);
+      email.setAuthenticator(new DefaultAuthenticator(this.fromEmailAddress, this.fromEmailPassword));
+      email.setSSLOnConnect(true);
+      email.setFrom(this.fromEmailAddress, "Planet Tracker");
+      email.setSubject("Planet Tracker email");
+      email.setMsg(text);
+      email.addTo(emailTo);
+      // email.setDebug(true);
+      email.send();
     } catch (Exception e) {
-      System.out.println("Text failed to send");
+      System.out.println("Single Email failed to send");
     }
   }
 
-  public void sendTextMessage(String text, String emailTo){
+  public void sendSingleTextMessage(String text, String emailTo){
     try {
       SimpleEmail email = new SimpleEmail();
       email.setHostName("smtp.gmail.com");
@@ -46,7 +46,50 @@ public class Email {
       // email.setDebug(true);  //if failing, uncomment to print out debug messages in terminal
       email.send();
     } catch (Exception e) {
-      System.out.println("Text failed to send");
+      System.out.println("Single Text failed to send");
+    }
+  }
+
+  public void sendTextMessages(String text, List<String> addressList){
+    try {
+      int totalAddresses = addressList.size();
+      int loops = (int)(Math.ceil(totalAddresses / 100.0));
+
+      //gmail SMTP emails max at 100 recipients
+      for (int i = 0; i < loops; i++) {
+        SimpleEmail email = new SimpleEmail();
+        email.setHostName("smtp.gmail.com");
+        email.setSmtpPort(465);
+        email.setAuthenticator(new DefaultAuthenticator(this.fromEmailAddress, this.fromEmailPassword));
+        email.setSSLOnConnect(true);
+        email.setFrom(this.fromEmailAddress, "Planet Tracker");
+        email.setSubject("Planet Tracker Text");
+        email.setMsg(text);
+
+        if (totalAddresses >= 100) {
+          for (String address : addressList.subList(i*100 , ((i+1)*100)-1)) {
+            email.addBcc(address);
+          }
+          // email.setDebug(true);  //if failing, uncomment to print out debug messages in terminal
+          email.send();
+        } else if (totalAddresses == 1){
+          email.addBcc(addressList.get(0));
+          // email.setDebug(true);  //if failing, uncomment to print out debug messages in terminal
+          email.send();
+        }
+        else {
+          for (String address : addressList.subList(i*100 , (addressList.size() - 1))) {
+            email.addBcc(address);
+          }
+          // email.setDebug(true);  //if failing, uncomment to print out debug messages in terminal
+          email.send();
+        }
+
+        totalAddresses -= 100;
+      }
+      System.out.println("Message sent to " + addressList.size() + " users.");
+    } catch (Exception e) {
+      System.out.println("Mass text failed to send");
     }
   }
 
