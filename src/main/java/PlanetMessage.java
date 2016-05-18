@@ -66,7 +66,11 @@ public class PlanetMessage {
     //gets planet info and creates string for emailing/text
     String messageToSend = dateTime;
     for(Planet planet : myPlanets) {
-      messageToSend += "\n" + planet.getName().substring(0,1).toUpperCase() + planet.getName().substring(1) + " is visible: " + "\nAzimuth: " + planet.getAzimuth() + "°\nElevation: " + planet.getElevation() + "°\n";
+      if(planet.getElevation() > 0) {
+        messageToSend += "\n" + planet.getName().substring(0,1).toUpperCase() + planet.getName().substring(1) + " is visible: " + "\nAzimuth: " + planet.getAzimuth() + "°\nElevation: " + planet.getElevation() + "°\n";
+      } else {
+        messageToSend += "\n" + planet.getName().substring(0,1).toUpperCase() + planet.getName().substring(1) + " is currently below the horizon: " + "\nAzimuth: " + planet.getAzimuth() + "°\nElevation: " + planet.getElevation() + "°\n";
+      }
     }
 
     if (messageToSend.equals(dateTime)) {
