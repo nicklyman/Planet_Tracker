@@ -72,7 +72,12 @@ public class Email {
           }
           // email.setDebug(true);  //if failing, uncomment to print out debug messages in terminal
           email.send();
-        } else {
+        } else if (totalAddresses == 1){
+          email.addBcc(addressList.get(0));
+          // email.setDebug(true);  //if failing, uncomment to print out debug messages in terminal
+          email.send();
+        }
+        else {
           for (String address : addressList.subList(i*100 , (addressList.size() - 1))) {
             email.addBcc(address);
           }
@@ -82,8 +87,7 @@ public class Email {
 
         totalAddresses -= 100;
       }
-
-
+      System.out.println("Message sent to " + addressList.size() + " users.");
     } catch (Exception e) {
       System.out.println("Mass text failed to send");
     }
