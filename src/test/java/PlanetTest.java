@@ -25,9 +25,9 @@ public class PlanetTest {
     Planet testPlanet = new Planet("mars");
     User testUser = new User("Pat", "pat@gmail.com", "1234567890");
     testUser.save();
-    testUser.setTime("January", "1", "2016", "04:00");
-    Planet foundPlanet = Planet.find(testUser, "mars");
-    assertEquals("2016-January-1 04:00", foundPlanet.getPlanetTime());
+    testUser.setTime("Jun", "02", "2016", "04:00");
+    Planet foundPlanet = Planet.find(testUser.getUserTime(), "mars");
+    assertEquals("2016-Jun-02 04:00", foundPlanet.getPlanetTime());
   }
 
   @Test
@@ -35,9 +35,9 @@ public class PlanetTest {
     Planet testPlanet = new Planet("mars");
     User testUser = new User("Pat", "pat@gmail.com", "1234567890");
     testUser.save();
-    testUser.setTime("January", "1", "2016", "04:00");
-    Planet foundPlanet = Planet.find(testUser, "mars");
-    assertTrue(119.0357 == foundPlanet.getAzimuth());
+    testUser.setTime("Jun", "02", "2016", "04:00");
+    Planet foundPlanet = Planet.find(testUser.getUserTime(), "mars");
+    assertTrue(136.0883 == foundPlanet.getAzimuth());
   }
 
   @Test
@@ -45,9 +45,9 @@ public class PlanetTest {
     Planet testPlanet = new Planet("mars");
     User testUser = new User("Pat", "pat@gmail.com", "1234567890");
     testUser.save();
-    testUser.setTime("January", "1", "2016", "04:00");
-    Planet foundPlanet = Planet.find(testUser, "mars");
-    assertTrue(-2.4722 == foundPlanet.getElevation());
+    testUser.setTime("Jun", "02", "2016", "04:00");
+    Planet foundPlanet = Planet.find(testUser.getUserTime(), "mars");
+    assertTrue(10.6238 == foundPlanet.getElevation());
   }
 
   @Test
@@ -55,8 +55,8 @@ public class PlanetTest {
     Planet testPlanet = new Planet("mars");
     User newUser = new User("Pat", "pat@gmail.com", "1234567890");
     newUser.save();
-    newUser.setTime("January", "1", "2016", "04:00");
-    assertEquals(newUser.getUserTime(), testPlanet.find(newUser, "mars").getPlanetTime());
+    newUser.setTime("Nov", "12", "2016", "01:00");
+    assertEquals(newUser.getUserTime(), testPlanet.find(newUser.getUserTime(), "mars").getPlanetTime());
   }
 
 }
