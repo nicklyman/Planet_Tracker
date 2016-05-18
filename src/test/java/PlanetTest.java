@@ -25,9 +25,9 @@ public class PlanetTest {
     Planet testPlanet = new Planet("mars");
     User testUser = new User("p@gmail.com", "1234567890", "Verizon", "PatMWells", "hello");
     testUser.save();
-    testUser.setTime("January", "1", "2016", "04:00");
+    testUser.setTime("Nov", "12", "2016", "01:00");
     Planet foundPlanet = Planet.find(testUser.getUserTime(), "mars");
-    assertEquals("2016-January-1 04:00", foundPlanet.getPlanetTime());
+    assertEquals("2016-Nov-12 01:00", foundPlanet.getPlanetTime());
   }
 
   @Test

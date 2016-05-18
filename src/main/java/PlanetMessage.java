@@ -40,7 +40,7 @@ public class PlanetMessage {
 
   //method to send to a single user, for specific system time
   public void sendToSingleUser(User user, String dateTime) {
-    System.out.println("Messaging user " + user.getName() + " for time: " + dateTime);
+    System.out.println("Messaging user " + user.getUserName() + " for time: " + dateTime);
 
     String messageToSend = textMessageBuilder(dateTime);
     System.out.println("Message:\n" + messageToSend);
