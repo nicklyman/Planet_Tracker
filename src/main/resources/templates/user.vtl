@@ -1,7 +1,11 @@
 <div class="center">
+  <ul class="nav nav-tabs">
+    <li role="presentation"><a href="/">Logout</a></li>
+    <li role="presentation"><a href="/about">About</a></li>
+  </ul>
   #if ($user)
     <h2 class="apply-font font-shadow">$user.getUserName()</h2>
-
+<br>
   <form action="/userDateTime/$user.getId()" method="post">
     <label for="month" class="font-shadow">Input the Date</label>
     <select name="month" required class = "font-black">
