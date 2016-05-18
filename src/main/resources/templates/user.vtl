@@ -75,13 +75,13 @@
   </form>
   <br>
 
-  #foreach($planet in $planets)
-    <li class="font-shadow">$planet.getName()</li>
-    <li class="font-shadow">$planet.getAzimuth()</li>
-    <li class="font-shadow">$planet.getElevation()</li>
-    <li class="font-shadow">$planet.getPlanetTime()</li>
-  #end
-
+#foreach($planet in $planets)
+    <h2 class="font-shadow apply-font"><u>$planet.capitalize()</u></h3>
+    <h3 class="font-shadow">&#8226; $planet.getAzimuth()</h3>
+    <h3 class="font-shadow">&#8226; $planet.getElevation()</h3>
+    <h3 class="font-shadow">&#8226; $planet.getPlanetTime()</h3>
+    <h2 class="font-shadow">&#8230;&#8230;</h3>
+#end
   #else
     <br>
     <br>
