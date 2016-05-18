@@ -72,7 +72,7 @@ public class AppTest extends FluentTest {
     click("option", withText("2023"));
     fill("#time").with("08:00");
     submit("#submitTime");
-    assertThat(pageSource()).contains("mars");
+    assertThat(pageSource()).contains("Mars");
   }
 
 
