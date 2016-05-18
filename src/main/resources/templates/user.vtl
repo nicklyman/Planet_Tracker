@@ -1,14 +1,6 @@
-#if(!($user.getName().equals("No User Information Available")))
-  <div class="center">
+<div class="center">
   #if ($user)
-    <h2 class="apply-font font-shadow">$user.getName()</h2>
-  #else
-    <br>
-    <br>
-    <br>
-    <br>
-    <h1>Error: Not Found</h1>
-  #end
+    <h3 class="apply-font font-shadow">$user.getName()</h3>
   <br>
 
   <form action="/userDateTime/$user.getId()" method="post">
@@ -90,10 +82,12 @@
     <h3 class="font-shadow">&#8226; $planet.getPlanetTime()</h3>
     <h2 class="font-shadow">&#8230;&#8230;</h3>
 #end
-<br>
+  #else
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>Error: Not Found</h1>
+  #end
   <a href="/" class="btn btn-default">Go Back to LogIn</a>
-#else
-  <h3>$user.getName()</h3>
-#end
-<br>
-<br>
+</div>
