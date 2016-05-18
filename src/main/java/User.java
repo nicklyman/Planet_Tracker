@@ -20,10 +20,6 @@ public class User{
     this.user_name = user_name;
   }
 
-  public String getName(){
-    return name;
-  }
-
   public String getEmail() {
     return email;
   }
@@ -48,14 +44,9 @@ public class User{
     return id;
   }
 
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO users (email, telephone, telephone_carrier, user_name, password) VALUES (:name, :email, :telephone, :telephone_carrier, :user_name, :password)";
+      String sql = "INSERT INTO users (email, telephone, telephone_carrier, user_name, password) VALUES (:email, :telephone, :telephone_carrier, :user_name, :password)";
       this.id = (int) con.createQuery(sql, true).addParameter("email", this.email).addParameter("telephone", this.telephone).addParameter("telephone_carrier", this.telephone_carrier).addParameter("user_name", this.user_name).addParameter("password", this.password).executeUpdate().getKey();
     }
   }
