@@ -1,4 +1,5 @@
 import org.sql2o.*;
+import java.util.*;
 
 
 public class Planet {
@@ -27,6 +28,13 @@ public class Planet {
   public double getElevation() {
     return elevation;
   }
+
+  public String capitalize(){
+  String str = this.getName();
+  String newString = str.substring(0, 1).toUpperCase() + str.substring(1);
+  return newString;
+  }
+
 
   public static Planet find(User user, String planetName){
     try(Connection con = DB.sql2o.open()){

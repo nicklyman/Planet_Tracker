@@ -1,7 +1,7 @@
 #if(!($user.getName().equals("No User Information Available")))
   <div class="center">
   #if ($user)
-    <h3 class="apply-font font-shadow">$user.getName()</h3>
+    <h2 class="apply-font font-shadow">$user.getName()</h2>
   #else
     <br>
     <br>
@@ -84,12 +84,16 @@
   <br>
 
 #foreach($planet in $planets)
-    <li class="font-shadow">$planet.getName()</li>
-    <li class="font-shadow">$planet.getAzimuth()</li>
-    <li class="font-shadow">$planet.getElevation()</li>
-    <li class="font-shadow">$planet.getPlanetTime()</li>
+    <h2 class="font-shadow apply-font"><u>$planet.capitalize()</u></h3>
+    <h3 class="font-shadow">&#8226; $planet.getAzimuth()</h3>
+    <h3 class="font-shadow">&#8226; $planet.getElevation()</h3>
+    <h3 class="font-shadow">&#8226; $planet.getPlanetTime()</h3>
+    <h2 class="font-shadow">&#8230;&#8230;</h3>
 #end
+<br>
   <a href="/" class="btn btn-default">Go Back to LogIn</a>
 #else
   <h3>$user.getName()</h3>
 #end
+<br>
+<br>
