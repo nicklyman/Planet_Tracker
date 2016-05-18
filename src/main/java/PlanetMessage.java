@@ -30,8 +30,6 @@ public class PlanetMessage {
     }
 
     this.email.sendTextMessages(messageToSend, myAddresses);
-
-    System.out.println("Message sent to " + myAddresses.size() + " users.");
   }
 
   //method to send to a single user, for current system time
