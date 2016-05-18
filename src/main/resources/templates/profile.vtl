@@ -2,8 +2,8 @@
 <h3 class = "apply-font">Create a Profile</h3>
 <br>
 <form action="/users" method="post">
-  <label for="newUserName" class="font-shadow">Input Your Name</label>
-  <input type="text" name="newUserName" class="font-black" required>
+  <label for="newName" class="font-shadow">Input Your Name</label>
+  <input type="text" name="newName" class="font-black" required>
   <br>
   <br>
   <label for="userEmail" class="font-shadow">Input Your Email</label>
@@ -26,6 +26,14 @@
     <option value="@vtext.com">Verizon</option>
     <option value="@vmobl.com">Virgin Mobile</option>
   </select>
+  <br>
+  <br>
+  <label for="newUserName" class="font-shadow">Create Your UserName</label>
+  <input type="text" name="newUserName" class="font-black" required>
+  <br>
+  <br>
+  <label for="userPassword" class="font-shadow">Create Your Password</label>
+  <input type="text" name="userPassword" class="font-black" required>
   <br>
   <br>
   <button type="submit" class="btn btn-default">Create Profile</button>

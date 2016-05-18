@@ -7,23 +7,27 @@ public class User{
   private String telephone;
   private String telephone_carrier;
   private String password;
+  private String user_name;
   private double latitude;
   private double longitude;
   private String user_time;
   private int id;
 
-  public User(String name, String email, String telephone){
+  public User(String name, String email, String telephone, String telephone_carrier, String user_name, String password){
     this.name = name;
     this.email = email;
     this.telephone = telephone;
+    this.telephone_carrier = telephone_carrier;
+    this.password = password;
+    this.user_name = user_name;
   }
 
   public String getName(){
     return name;
   }
 
-  public int getId() {
-    return id;
+  public String getEmail() {
+    return email;
   }
 
   public String getPhone(){
@@ -34,15 +38,27 @@ public class User{
     return password;
   }
 
+  public String getUserName() {
+    return user_name;
+  }
+
   public String getTelephoneCarrier() {
     return telephone_carrier;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO users (name, email, telephone) VALUES (:name, :email, :telephone)";
-      this.id = (int) con.createQuery(sql, true).addParameter("name", this.name).addParameter("email", this.email).addParameter("telephone", this.telephone).executeUpdate().getKey();
+      String sql = "INSERT INTO users (name, email, telephone, telephone_carrier, user_name, password) VALUES (:name, :email, :telephone, :telephone_carrier, :user_name, :password)";
+      this.id = (int) con.createQuery(sql, true).addParameter("name", this.name).addParameter("email", this.email).addParameter("telephone", this.telephone).addParameter("telephone_carrier", this.telephone_carrier).addParameter("user_name", this.user_name).addParameter("password", this.password).executeUpdate().getKey();
     }
   }
 
@@ -60,14 +76,24 @@ public class User{
     }
   }
 
-  public static int noCopiesInData(String phoneNumber){
-    int counter = 0;
+  public static int noCopiesInData(User checkUser){
+    int copyFinder = 0;
     for(User user : User.all()){
-      if (user.getPhone().equals(phoneNumber)){
-        counter = user.getId();
+      if (user.equals(checkUser)){
+        copyFinder = user.getId();
       }
     }
-    return counter;
+    return copyFinder;
+  }
+
+  public static User userNamePasswordLookUp(String username, String password) {
+    int userLookUpID = 0;
+    for(User user : User.all()) {
+      if(user.getUserName().equals(username) && user.getPassword().equals(password)){
+        userLookUpID = user.getId();
+      }
+    }
+    return User.find(userLookUpID);
   }
 
   public void setTime(String month, String day, String year, String time) {
@@ -93,4 +119,17 @@ public class User{
       .executeUpdate();
     }
   }
+
+
+  @Override
+  public boolean equals(Object object) {
+    if(!(object instanceof User)){
+      return false;
+    } else {
+      User user = (User) object;
+      return this.getName().equals(user.getName()) && this.getEmail().equals(user.getEmail()) && this.getPhone().equals(user.getPhone()) && this.getPassword().equals(user.getPassword()) && this.getUserName().equals(user.getUserName()) && this.getTelephoneCarrier().equals(user.getTelephoneCarrier());
+    }
+  }
+
+
 }
