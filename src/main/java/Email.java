@@ -72,13 +72,8 @@ public class Email {
           }
           // email.setDebug(true);  //if failing, uncomment to print out debug messages in terminal
           email.send();
-        } else if (totalAddresses == 1){
-          email.addBcc(addressList.get(0));
-          // email.setDebug(true);  //if failing, uncomment to print out debug messages in terminal
-          email.send();
-        }
-        else {
-          for (String address : addressList.subList(i*100 , (addressList.size() - 1))) {
+        } else {
+          for (String address : addressList.subList(i*100 , addressList.size())) {
             email.addBcc(address);
           }
           // email.setDebug(true);  //if failing, uncomment to print out debug messages in terminal
