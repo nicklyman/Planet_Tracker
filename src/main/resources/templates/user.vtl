@@ -1,6 +1,6 @@
 <div class="center">
   #if ($user)
-    <h3 class="apply-font font-shadow">$user.getName()</h3>
+    <h3 class="apply-font font-shadow">$user.getUserName()</h3>
   <br>
 
   <form action="/userDateTime/$user.getId()" method="post">
@@ -68,10 +68,10 @@
     <br>
     <br>
     <label for="time" class="font-shadow">Input time</label>
-    <input type="text" name="time" class="font-black" placeholder="00:00">
+    <input id="time" type="text" name="time" class="font-black" placeholder="00:00">
     <br>
     <br>
-    <button type="submit" name="makeUser" class="btn btn-default font-black">Submit</button>
+    <button id="submitTime" type="submit" name="makeUser" class="btn btn-default font-black">Submit</button>
   </form>
   <br>
 

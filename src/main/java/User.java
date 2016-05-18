@@ -2,7 +2,6 @@ import org.sql2o.*;
 import java.util.List;
 
 public class User{
-  private String name;
   private String email;
   private String telephone;
   private String telephone_carrier;
@@ -13,17 +12,12 @@ public class User{
   private String user_time;
   private int id;
 
-  public User(String name, String email, String telephone, String telephone_carrier, String user_name, String password){
-    this.name = name;
+  public User(String email, String telephone, String telephone_carrier, String user_name, String password){
     this.email = email;
     this.telephone = telephone;
     this.telephone_carrier = telephone_carrier;
     this.password = password;
     this.user_name = user_name;
-  }
-
-  public String getName(){
-    return name;
   }
 
   public String getEmail() {
@@ -50,15 +44,10 @@ public class User{
     return id;
   }
 
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO users (name, email, telephone, telephone_carrier, user_name, password) VALUES (:name, :email, :telephone, :telephone_carrier, :user_name, :password)";
-      this.id = (int) con.createQuery(sql, true).addParameter("name", this.name).addParameter("email", this.email).addParameter("telephone", this.telephone).addParameter("telephone_carrier", this.telephone_carrier).addParameter("user_name", this.user_name).addParameter("password", this.password).executeUpdate().getKey();
+      String sql = "INSERT INTO users (email, telephone, telephone_carrier, user_name, password) VALUES (:email, :telephone, :telephone_carrier, :user_name, :password)";
+      this.id = (int) con.createQuery(sql, true).addParameter("email", this.email).addParameter("telephone", this.telephone).addParameter("telephone_carrier", this.telephone_carrier).addParameter("user_name", this.user_name).addParameter("password", this.password).executeUpdate().getKey();
     }
   }
 
@@ -127,7 +116,7 @@ public class User{
       return false;
     } else {
       User user = (User) object;
-      return this.getName().equals(user.getName()) && this.getEmail().equals(user.getEmail()) && this.getPhone().equals(user.getPhone()) && this.getPassword().equals(user.getPassword()) && this.getUserName().equals(user.getUserName()) && this.getTelephoneCarrier().equals(user.getTelephoneCarrier());
+      return this.getEmail().equals(user.getEmail()) && this.getPhone().equals(user.getPhone()) && this.getPassword().equals(user.getPassword()) && this.getUserName().equals(user.getUserName()) && this.getTelephoneCarrier().equals(user.getTelephoneCarrier());
     }
   }
 
