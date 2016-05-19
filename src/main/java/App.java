@@ -38,7 +38,9 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       String userNameLogin = request.queryParams("userNameLogin");
       String passwordLogin = request.queryParams("passwordLogin");
+
       User user = User.userNamePasswordLookUp(userNameLogin, passwordLogin);
+
       model.put("user", user);
       model.put("template", "templates/user.vtl");
       return new ModelAndView(model, layout);

@@ -78,6 +78,7 @@ public class User{
   public static User userNamePasswordLookUp(String username, String password) {
     int userLookUpID = 0;
     for(User user : User.all()) {
+      System.out.println(user.getUserName());
       if(user.getUserName().equals(username) && user.getPassword().equals(password)){
         userLookUpID = user.getId();
       }
