@@ -38,7 +38,9 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       String userNameLogin = request.queryParams("userNameLogin");
       String passwordLogin = request.queryParams("passwordLogin");
+
       User user = User.userNamePasswordLookUp(userNameLogin, passwordLogin);
+
       model.put("user", user);
       model.put("template", "templates/user.vtl");
       return new ModelAndView(model, layout);
@@ -94,11 +96,17 @@ public class App {
       String userTelephoneCarrier = request.queryParams("userTelephoneCarrier");
       String userName = request.queryParams("newUserName");
       String userPassword = request.queryParams("userPassword");
+      String[] textMessageAutomation = request.queryParamsValues("textMessageAutomation");
 
 
       User user = new User(userEmail, userTelephone, userTelephoneCarrier, userName, userPassword);
       int copyFinder = User.noCopiesInData(user);
       if(copyFinder == 0){
+        if(textMessageAutomation == null) {
+          user.setSubscription(false);
+        }else{
+          user.setSubscription(true);
+        }
         user.save();
       } else {
         user = User.find(copyFinder);
@@ -138,7 +146,7 @@ public class App {
         //Messaging Service
         System.out.println("initializing messaging service");
         //send PlanetMessage email
-        myMessage.send(dateTime);
+        myMessage.sendAdmin(dateTime);
       }
       response.redirect("/adminPage");
       return null;
