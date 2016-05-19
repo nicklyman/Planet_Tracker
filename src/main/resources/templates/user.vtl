@@ -74,16 +74,16 @@
       <input id="time" type="text" name="time" class="font-black" placeholder="00:00">
     <br>
     <br>
-    <input type="checkbox" name="textMessage" value="1">Send Text Message
+    <input type="checkbox" name="textMessage" value="1" class="font-shadow">Send Text Message
     <button id="submitTime" type="submit" name="makeUser" class="btn btn-default font-black">Submit</button>
   </form>
   <br>
 
 #foreach($planet in $planets)
     <h2 class="font-shadow apply-font"><u>$planet.capitalize()</u></h3>
-    <h3 class="font-shadow">&#8226; $planet.getAzimuth()</h3>
-    <h3 class="font-shadow">&#8226; $planet.getElevation()</h3>
-    <h3 class="font-shadow">&#8226; $planet.getPlanetTime()</h3>
+    <h3 class="font-shadow">Azimuth: $planet.getAzimuth()</h3>
+    <h3 class="font-shadow">Elevation: $planet.getElevation()</h3>
+    <h3 class="font-shadow">Time: $planet.getPlanetTime()</h3>
     <h2 class="font-shadow">&#8230;&#8230;</h3>
 #end
   #else
