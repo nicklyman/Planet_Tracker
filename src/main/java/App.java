@@ -13,15 +13,15 @@ public class App {
   public static void main(String[] args) {
     // //--------------------------------------------------------------------------
     //Messaging Service, uncomment when ready to begin automatic spam
-    System.out.println("startup...");
-
-    //Create Message object
-    PlanetMessage serviceMessage = new PlanetMessage("planet.tracker123@gmail.com", args[0]);
-
-    //Messaging Service
-    System.out.println("initializing messaging service");
-    //sends PlanetMessage email every 1 minute
-    MessageService messageService = new MessageService(serviceMessage, Integer.valueOf(args[1]), 60);
+    // System.out.println("startup...");
+    //
+    // //Create Message object
+    // PlanetMessage serviceMessage = new PlanetMessage("planet.tracker123@gmail.com", args[0]);
+    //
+    // //Messaging Service
+    // System.out.println("initializing messaging service");
+    // //sends PlanetMessage email every 1 minute
+    // MessageService messageService = new MessageService(serviceMessage, Integer.valueOf(args[1]), 60);
     //--------------------------------------------------------------------------
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
