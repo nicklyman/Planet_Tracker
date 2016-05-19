@@ -16,10 +16,10 @@ _No current known bugs._
 
 ## Contributers
 
-*_Daniel Wulff_
-*_Nick Lyman_
-*_Patrick Wells_
-*_Blake Bless_
+* _Daniel Wulff_
+* _Nick Lyman_
+* _Patrick Wells_
+* _Blake Bless_
 
 
 ## Technologies Used
