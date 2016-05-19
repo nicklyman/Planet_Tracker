@@ -61,7 +61,19 @@ public class App {
       String day = request.queryParams("day");
       String year = request.queryParams("year");
       String time = request.queryParams("time");
+      String[] textChoice = request.queryParamsValues("textMessage");
       user.setTime(month, day, year, time);
+
+      if(textChoice[0].equals("1")) {
+          //Create Message object
+        PlanetMessage myMessage = new PlanetMessage("planet.tracker123@gmail.com", args[0]);
+        //Put together manual dateTime string
+        String dateTime = DateTime.convertUserInput(year, month, day, time);
+        //Messaging Service
+        System.out.println("initializing messaging service");
+        //send PlanetMessage email
+        myMessage.sendToSingleUser(user, dateTime);
+      }
 
       String[] planetNames = {"mars", "venus", "neptune", "uranus", "mercury", "jupiter", "saturn", "pluto"};
       ArrayList<Planet> planets = new ArrayList<Planet>();
