@@ -1,9 +1,9 @@
 <div class="center">
+  #if ($user)
   <ul class="nav nav-tabs">
     <li role="presentation"><a href="/">Logout</a></li>
     <li role="presentation"><a href="/about">About</a></li>
   </ul>
-  #if ($user)
     <h2 class="apply-font font-shadow">$user.getUserName()</h2>
 <br>
   <form action="/userDateTime/$user.getId()" method="post">
@@ -86,15 +86,20 @@
     <h2 class="font-shadow">&#8230;&#8230;</h3>
 #end
   #else
-    <br>
-    <br>
-    <br>
-    <br>
-    <h1>Error: Not Found</h1>
-    <br>
-    <br>
-    <br>
-    <br>
+  <ul class="nav nav-tabs">
+    <li role="presentation"><a href="/users">Create Account</a></li>
+    <li role="presentation"><a href="/about">About</a></li>
+  </ul>
+  <br>
+  <br>
+  <br>
+  <br>
+  <h1>Error: Not Found</h1>
+  <br>
+  <br>
+  <br>
+  <br>
+  <h5><a href="/" class="btn btn-default">Try Again</a></h5>
   #end
     <br>
 </div>
