@@ -4,24 +4,26 @@
     <li role="presentation"><a href="/">Logout</a></li>
     <li role="presentation"><a href="/about">About</a></li>
   </ul>
-    <h2 class="apply-font font-shadow">$user.getUserName()</h2>
-<br>
+  <h2 class="apply-font font-shadow">$user.getUserName()</h2>
+  <p class="font-shadow">
+    Fill out the form below to print information about the location of the planets at that time.
+  </p>
   <form action="/userDateTime/$user.getId()" method="post">
     <label for="month" class="font-shadow">Input the Date</label>
-      <select name="month" required class = "font-black">
-        <option value="Jan">January</option>
-        <option value="Feb">February</option>
-        <option value="Mar">March</option>
-        <option value="Apr">April</option>
-        <option value="May">May</option>
-        <option value="Jun">June</option>
-        <option value="Jul">July</option>
-        <option value="Aug">August</option>
-        <option value="Sep">September</option>
-        <option value="Oct">October</option>
-        <option value="Nov">November</option>
-        <option value="Dec">December</option>
-      </select>
+    <select name="month" required class = "font-black">
+      <option value="Jan">January</option>
+      <option value="Feb">February</option>
+      <option value="Mar">March</option>
+      <option value="Apr">April</option>
+      <option value="May">May</option>
+      <option value="Jun">June</option>
+      <option value="Jul">July</option>
+      <option value="Aug">August</option>
+      <option value="Sep">September</option>
+      <option value="Oct">October</option>
+      <option value="Nov">November</option>
+      <option value="Dec">December</option>
+    </select>
     <select name="day" required class = "font-black">
       <option value="01">1</option>
       <option value="02">2</option>
@@ -70,8 +72,8 @@
     </select>
     <br>
     <br>
-      <label for="time" class="font-shadow">Input time</label>
-      <input id="time" type="text" name="time" class="font-black" placeholder="00:00">
+    <label for="time" class="font-shadow">Input time UTC</label>
+    <input id="time" type="text" name="time" class="font-black" placeholder="00:00">
     <br>
     <br>
     <input type="checkbox" name="textMessage" value="1" class="font-shadow">Send Text Message
@@ -85,24 +87,24 @@
     <h3 class="font-shadow">Elevation: $planet.getElevation()</h3>
     <h3 class="font-shadow">Time: $planet.getPlanetTime()</h3>
     <h2 class="font-shadow">&#8230;&#8230;</h3>
-#end
-  #else
-  <ul class="nav nav-tabs">
-    <li role="presentation"><a href="/users">Create Account</a></li>
-    <li role="presentation"><a href="/about">About</a></li>
-  </ul>
-  <br>
-  <br>
-  <br>
-  <br>
-  <h1>Error: Not Found</h1>
-  <br>
-  <br>
-  <br>
-  <br>
-  <h5><a href="/" class="btn btn-default">Try Again</a></h5>
-  #end
+      #end
+      #else
+      <ul class="nav nav-tabs">
+        <li role="presentation"><a href="/users">Create Account</a></li>
+        <li role="presentation"><a href="/about">About</a></li>
+      </ul>
+      <br>
+      <br>
+      <br>
+      <br>
+      <h1>Error: Not Found</h1>
+      <br>
+      <br>
+      <br>
+      <br>
+      <h5><a href="/" class="btn btn-default">Try Again</a></h5>
+      #end
+      <br><hr>
+      <a href="/delete/$user.getId()" class="btn btn-default">Delete Profile</a>
+    </div>
     <br>
-    <a href="/delete/$user.getId()" class="btn btn-default">Delete Profile</a>
-</div>
-<br>
