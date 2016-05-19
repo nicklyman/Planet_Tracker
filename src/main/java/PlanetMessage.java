@@ -9,31 +9,13 @@ public class PlanetMessage {
   }
 
   //sending messages, doesn't know what time it is, so get the current time (rounded down)
-  public void send() {
+  public void sendAutomated() {
     DateTime presentTime = new DateTime(System.currentTimeMillis());
-    this.send(presentTime.getSimpleDateTimeRoundedDown(), presentTime.getDateTimePSTRoundedDown());
+    this.sendAutomated(presentTime.getSimpleDateTimeRoundedDown(), presentTime.getDateTimePSTRoundedDown());
   }
 
   //sending messages using a manual time
-  public void send(String dateTime) {
-    System.out.println("Messaging users for time: " + dateTime + "UTC");
-
-    String messageToSend = textMessageBuilder(dateTime);
-    System.out.println("Message:\n" + messageToSend);
-
-    //loop through users database and send messages
-    List<User> myUsers = User.all();
-    List<String> myAddresses = new ArrayList<String>();
-    for(User user : myUsers) {
-      String userAddress = user.getPhone() + user.getTelephoneCarrier();
-      myAddresses.add(userAddress);
-    }
-
-    this.email.sendTextMessages(messageToSend, myAddresses);
-  }
-
-  //sending messages using a manual time
-  public void send(String dateTime, String localTime) {
+  public void sendAutomated(String dateTime, String localTime) {
     System.out.println("Messaging users for time: " + localTime + "PST");
 
     String messageToSend = textMessageBuilder(dateTime, localTime);
@@ -43,8 +25,30 @@ public class PlanetMessage {
     List<User> myUsers = User.all();
     List<String> myAddresses = new ArrayList<String>();
     for(User user : myUsers) {
-      String userAddress = user.getPhone() + user.getTelephoneCarrier();
-      myAddresses.add(userAddress);
+      if(user.getSubscription()) {
+        String userAddress = user.getPhone() + user.getTelephoneCarrier();
+        myAddresses.add(userAddress);
+      }
+    }
+
+    this.email.sendTextMessages(messageToSend, myAddresses);
+  }
+
+  //sending messages using a manual time
+  public void sendAdmin(String dateTime) {
+    System.out.println("Messaging users for time: " + dateTime + "UTC");
+
+    String messageToSend = textMessageBuilder(dateTime);
+    System.out.println("Message:\n" + messageToSend);
+
+    //loop through users database and send messages
+    List<User> myUsers = User.all();
+    List<String> myAddresses = new ArrayList<String>();
+    for(User user : myUsers) {
+      if(user.getSubscription()) {
+        String userAddress = user.getPhone() + user.getTelephoneCarrier();
+        myAddresses.add(userAddress);
+      }
     }
 
     this.email.sendTextMessages(messageToSend, myAddresses);

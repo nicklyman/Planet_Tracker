@@ -26,7 +26,7 @@ public class MessageService {
 
     //MAIN LOOP FOR MESSAGING
     public void run() {
-      this.myMessage.send();
+      this.myMessage.sendAutomated();
     }
 
   }

@@ -10,6 +10,7 @@ public class User{
   private double latitude;
   private double longitude;
   private String user_time;
+  private boolean subscription;
   private int id;
 
   public User(String email, String telephone, String telephone_carrier, String user_name, String password){
@@ -44,10 +45,21 @@ public class User{
     return id;
   }
 
+  public boolean getSubscription() {
+    return subscription;
+  }
+
+  public void setSubscription(boolean subscription) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "ALTER TABLE users SET subscription = :subscription WHERE id=:id";
+      con.createQuery(sql).addParameter("subscription", subscription).addParameter("id", this.getId()).executeUpdate();
+    }
+  }
+
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO users (email, telephone, telephone_carrier, user_name, password) VALUES (:email, :telephone, :telephone_carrier, :user_name, :password)";
-      this.id = (int) con.createQuery(sql, true).addParameter("email", this.email).addParameter("telephone", this.telephone).addParameter("telephone_carrier", this.telephone_carrier).addParameter("user_name", this.user_name).addParameter("password", this.password).executeUpdate().getKey();
+      String sql = "INSERT INTO users (email, telephone, telephone_carrier, user_name, password, subscription) VALUES (:email, :telephone, :telephone_carrier, :user_name, :password, :subscription)";
+      this.id = (int) con.createQuery(sql, true).addParameter("email", this.email).addParameter("telephone", this.telephone).addParameter("telephone_carrier", this.telephone_carrier).addParameter("user_name", this.user_name).addParameter("password", this.password).addParameter("subscription", this.subscription).executeUpdate().getKey();
     }
   }
 
@@ -78,7 +90,6 @@ public class User{
   public static User userNamePasswordLookUp(String username, String password) {
     int userLookUpID = 0;
     for(User user : User.all()) {
-      System.out.println(user.getUserName());
       if(user.getUserName().equals(username) && user.getPassword().equals(password)){
         userLookUpID = user.getId();
       }
