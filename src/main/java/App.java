@@ -3,6 +3,10 @@ import java.util.ArrayList;
 import java.util.Map;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
+import java.awt.Dialog;
+import javax.swing.JOptionPane;
+import javax.swing.JFrame;
+import javax.swing.JDialog;
 
 import static spark.Spark.*;
 
@@ -127,6 +131,23 @@ public class App {
         myMessage.send(dateTime);
       }
       response.redirect("/adminPage");
+      return null;
+    });
+
+    get("/delete/:id", (request, response) -> {
+      User user = User.find(Integer.parseInt(request.params("id")));
+      JFrame frame = new JFrame();
+      frame.setAlwaysOnTop(true);
+      String password = (String)JOptionPane.showInputDialog(frame, "Enter your password to delete your profile:\n", "Customized Dialog", JOptionPane.PLAIN_MESSAGE, null, null, null);
+      String url = String.format("/users/%d", user.getId());
+
+      if((password != null) && (password.length() > 0)) {
+        boolean passwordCheck = user.delete(password);
+        if(passwordCheck){
+          url = "/";
+        }
+      }
+      response.redirect(url);
       return null;
     });
 
