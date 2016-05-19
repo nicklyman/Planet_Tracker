@@ -1,41 +1,45 @@
 <div class="center">
-<ul class="nav nav-tabs">
-  <li role="presentation"><a href="/">Login</a></li>
-  <li role="presentation"><a href="/about">About</a></li>
-</ul>
-<h3 class = "apply-font">Create a Profile</h3>
-<br>
-<form action="/users" method="post">
+  <ul class="nav nav-tabs">
+    <li role="presentation"><a href="/">Login</a></li>
+    <li role="presentation"><a href="/about">About</a></li>
+  </ul>
+  <br>
+  <p>
+    Creating an account will allow you to receive texts with information as to the current location of planets in the night sky as seen from Portland, OR. 
+  </p>
+  <h3 class = "apply-font">Create a Profile</h3>
+  <br>
+  <form action="/users" method="post">
     <label for="newUserName" class="font-shadow">Create Your UserName:</label>
     <input id="newUserName" type="text" name="newUserName" class="font-black" required>
-  <br>
-  <br>
+    <br>
+    <br>
     <label for="userPassword" class="font-shadow">Create Your Password:</label>
     <input id="userPassword" type="password" name="userPassword" class="font-black" required>
-  <br>
-  <br>
+    <br>
+    <br>
     <label for="userEmail" class="font-shadow">Input Your Email:</label>
     <input type="text" id="userEmail" name="userEmail" class="font-black" required>
-  <br>
-  <br>
+    <br>
+    <br>
     <label for="userTelephone" class="font-shadow">Input Your Telephone Number:</label>
     <input type="text" id="userTelephone" name="userTelephone" class="font-black" required>
-  <select name="userTelephoneCarrier" required class = "font-black">
-    <option value="@txt.att.net">AT&T</option>
-    <option value="@message.alltel.com">Alltel</option>
-    <option value="@myboostmobile.com">Boost mobile</option>
-    <option value="@sms.mycricket.com">Cricket</option>
-    <option value="@sms.edgewireless.com">Edge wireless</option>
-    <option value="@mymetropcs.com">Metro PCS</option>
-    <option value="@messaging.nextel.com">Nextel</option>
-    <option value="@messaging.sprintpcs.com">Sprint</option>
-    <option value="@tmomail.net">T-Mobile</option>
-    <option value="@email.uscc.net">US Cellular</option>
-    <option value="@vzwpix.com">Verizon</option>
-    <option value="@vmobl.com">Virgin Mobile</option>
-  </select>
-  <br>
-  <br>
-  <button id="createProfile" type="submit" class="btn btn-default">Create Profile</button>
-</form>
+    <select name="userTelephoneCarrier" required class = "font-black">
+      <option value="@txt.att.net">AT&T</option>
+      <option value="@message.alltel.com">Alltel</option>
+      <option value="@myboostmobile.com">Boost mobile</option>
+      <option value="@sms.mycricket.com">Cricket</option>
+      <option value="@sms.edgewireless.com">Edge wireless</option>
+      <option value="@mymetropcs.com">Metro PCS</option>
+      <option value="@messaging.nextel.com">Nextel</option>
+      <option value="@messaging.sprintpcs.com">Sprint</option>
+      <option value="@tmomail.net">T-Mobile</option>
+      <option value="@email.uscc.net">US Cellular</option>
+      <option value="@vzwpix.com">Verizon</option>
+      <option value="@vmobl.com">Virgin Mobile</option>
+    </select>
+    <br>
+    <br>
+    <button id="createProfile" type="submit" class="btn btn-default">Create Profile</button>
+  </form>
 </div>
