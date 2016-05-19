@@ -3,6 +3,10 @@ import java.util.ArrayList;
 import java.util.Map;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
+import java.awt.Dialog;
+import javax.swing.JOptionPane;
+import javax.swing.JFrame;
+import javax.swing.JDialog;
 
 import static spark.Spark.*;
 
@@ -55,7 +59,19 @@ public class App {
       String day = request.queryParams("day");
       String year = request.queryParams("year");
       String time = request.queryParams("time");
+      String[] textChoice = request.queryParamsValues("textMessage");
       user.setTime(month, day, year, time);
+
+      if(textChoice[0].equals("1")) {
+          //Create Message object
+        PlanetMessage myMessage = new PlanetMessage("planet.tracker123@gmail.com", args[0]);
+        //Put together manual dateTime string
+        String dateTime = DateTime.convertUserInput(year, month, day, time);
+        //Messaging Service
+        System.out.println("initializing messaging service");
+        //send PlanetMessage email
+        myMessage.sendToSingleUser(user, dateTime);
+      }
 
       String[] planetNames = {"mars", "venus", "neptune", "uranus", "mercury", "jupiter", "saturn", "pluto"};
       ArrayList<Planet> planets = new ArrayList<Planet>();
@@ -133,6 +149,23 @@ public class App {
       model.put("template", "templates/about.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    get("/delete/:id", (request, response) -> {
+      User user = User.find(Integer.parseInt(request.params("id")));
+      JFrame frame = new JFrame();
+      frame.setAlwaysOnTop(true);
+      String password = (String)JOptionPane.showInputDialog(frame, "Enter your password to delete your profile:\n", "Customized Dialog", JOptionPane.PLAIN_MESSAGE, null, null, null);
+      String url = String.format("/users/%d", user.getId());
+
+      if((password != null) && (password.length() > 0)) {
+        boolean passwordCheck = user.delete(password);
+        if(passwordCheck){
+          url = "/";
+        }
+      }
+      response.redirect(url);
+      return null;
+    });
 
   }
 }

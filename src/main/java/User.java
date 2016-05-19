@@ -100,15 +100,20 @@ public class User{
     }
   }
 
-  public void delete() {
-    try(Connection con = DB.sql2o.open()) {
-      String sql = "DELETE FROM users WHERE id = :id";
-      con.createQuery(sql)
-      .addParameter("id", this.id)
-      .executeUpdate();
+  public boolean delete(String password) {
+    User user = User.find(this.getId());
+    if(user.getPassword().equals(password)){
+      try(Connection con = DB.sql2o.open()) {
+        String sql = "DELETE FROM users WHERE id = :id";
+        con.createQuery(sql)
+        .addParameter("id", this.id)
+        .executeUpdate();
+      }
+      return true;
+    } else {
+      return false;
     }
   }
-
 
   @Override
   public boolean equals(Object object) {
