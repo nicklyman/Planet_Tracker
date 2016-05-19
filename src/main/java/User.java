@@ -13,12 +13,13 @@ public class User{
   private boolean subscription;
   private int id;
 
-  public User(String email, String telephone, String telephone_carrier, String user_name, String password){
+  public User(String email, String telephone, String telephone_carrier, String user_name, String password, boolean subscription){
     this.email = email;
     this.telephone = telephone;
     this.telephone_carrier = telephone_carrier;
     this.password = password;
     this.user_name = user_name;
+    this.subscription = subscription;
   }
 
   public String getEmail() {
@@ -51,7 +52,7 @@ public class User{
 
   public void setSubscription(boolean subscription) {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "ALTER TABLE users SET subscription = :subscription WHERE id=:id";
+      String sql = "UPDATE users SET subscription=:subscription WHERE id=:id";
       con.createQuery(sql).addParameter("subscription", subscription).addParameter("id", this.getId()).executeUpdate();
     }
   }

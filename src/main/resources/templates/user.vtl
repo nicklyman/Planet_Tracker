@@ -81,30 +81,43 @@
   </form>
   <br>
 
-#foreach($planet in $planets)
+  #foreach($planet in $planets)
     <h2 class="font-shadow apply-font"><u>$planet.capitalize()</u></h3>
     <h3 class="font-shadow">Azimuth: $planet.getAzimuth()</h3>
     <h3 class="font-shadow">Elevation: $planet.getElevation()</h3>
     <h3 class="font-shadow">Time: $planet.getPlanetTime()</h3>
     <h2 class="font-shadow">&#8230;&#8230;</h3>
-      #end
-      #else
-      <ul class="nav nav-tabs">
-        <li role="presentation"><a href="/users">Create Account</a></li>
-        <li role="presentation"><a href="/about">About</a></li>
-      </ul>
-      <br>
-      <br>
-      <br>
-      <br>
-      <h1>Error: Not Found</h1>
-      <br>
-      <br>
-      <br>
-      <br>
-      <h5><a href="/" class="btn btn-default">Try Again</a></h5>
-      #end
-      <br><hr>
-      <a href="/delete/$user.getId()" class="btn btn-default">Delete Profile</a>
-    </div>
-    <br>
+  #end
+  <br><hr>
+  <div class="radio">
+    <form action="/updateSubscription/$user.getId()" method="post">
+      <label>
+      <input type="radio" name="subscriptionOptions" value="0">
+      Subscribe</label>
+      <label>
+      <input type="radio" name="subscriptionOptions" value="1">
+      Don't Subscribe</label>
+      <button class = "font-black" type="submit" name="button">Update Subscription</button>
+    </form>
+  </div>
+  <br>
+  <br>
+  <a href="/delete/$user.getId()" class="btn btn-default">Delete Profile</a>
+</div>
+<br>
+#else
+  <ul class="nav nav-tabs">
+    <li role="presentation"><a href="/users">Create Account</a></li>
+    <li role="presentation"><a href="/about">About</a></li>
+  </ul>
+  <br>
+  <br>
+  <br>
+  <br>
+  <h1>Error: Not Found</h1>
+  <br>
+  <br>
+  <br>
+  <br>
+  <h5><a href="/" class="btn btn-default">Try Again</a></h5>
+#end

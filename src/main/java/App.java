@@ -7,6 +7,7 @@ import java.awt.Dialog;
 import javax.swing.JOptionPane;
 import javax.swing.JFrame;
 import javax.swing.JDialog;
+import javax.servlet.http.*;
 
 import static spark.Spark.*;
 
@@ -64,7 +65,7 @@ public class App {
       String[] textChoice = request.queryParamsValues("textMessage");
       user.setTime(month, day, year, time);
 
-      if(textChoice[0].equals("1")) {
+      if(!(textChoice == null)) {
           //Create Message object
         PlanetMessage myMessage = new PlanetMessage("planet.tracker123@gmail.com", args[0]);
         //Put together manual dateTime string
@@ -97,16 +98,17 @@ public class App {
       String userName = request.queryParams("newUserName");
       String userPassword = request.queryParams("userPassword");
       String[] textMessageAutomation = request.queryParamsValues("textMessageAutomation");
+      boolean subscription = false;
+      if (textMessageAutomation == null) {
+        subscription = false;
+      } else {
+        subscription = true;
+      }
 
 
-      User user = new User(userEmail, userTelephone, userTelephoneCarrier, userName, userPassword);
+      User user = new User(userEmail, userTelephone, userTelephoneCarrier, userName, userPassword, subscription);
       int copyFinder = User.noCopiesInData(user);
       if(copyFinder == 0){
-        if(textMessageAutomation == null) {
-          user.setSubscription(false);
-        }else{
-          user.setSubscription(true);
-        }
         user.save();
       } else {
         user = User.find(copyFinder);
@@ -171,6 +173,21 @@ public class App {
           url = "/";
         }
       }
+      response.redirect(url);
+      return null;
+    });
+
+    post("/updateSubscription/:id", (request, response) -> {
+      User user = User.find(Integer.parseInt(request.params("id")));
+      String[] textMessageAutomation = request.queryParamsValues("subscriptionOptions");
+      boolean subscription = false;
+      if (textMessageAutomation[0].equals("1")) {
+        subscription = false;
+      } else {
+        subscription = true;
+      }
+      user.setSubscription(subscription);
+      String url = String.format("/users/%d", user.getId());
       response.redirect(url);
       return null;
     });
