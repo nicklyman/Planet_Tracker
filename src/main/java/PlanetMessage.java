@@ -25,10 +25,10 @@ public class PlanetMessage {
     List<User> myUsers = User.all();
     List<String> myAddresses = new ArrayList<String>();
     for(User user : myUsers) {
-      if(user.getSubscription()) {
+      // if(user.getSubscription()) {
         String userAddress = user.getPhone() + user.getTelephoneCarrier();
         myAddresses.add(userAddress);
-      }
+      // }
     }
 
     this.email.sendTextMessages(messageToSend, myAddresses);
@@ -45,10 +45,10 @@ public class PlanetMessage {
     List<User> myUsers = User.all();
     List<String> myAddresses = new ArrayList<String>();
     for(User user : myUsers) {
-      if(user.getSubscription()) {
+      // if(user.getSubscription()) {
         String userAddress = user.getPhone() + user.getTelephoneCarrier();
         myAddresses.add(userAddress);
-      }
+      // }
     }
 
     this.email.sendTextMessages(messageToSend, myAddresses);
