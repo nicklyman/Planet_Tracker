@@ -24,7 +24,7 @@ public class App {
     //Messaging Service
     System.out.println("initializing messaging service");
     //sends PlanetMessage email every 1 minute
-    MessageService messageService = new MessageService(serviceMessage, Integer.valueOf(args[1]), 60);
+    MessageService messageService = new MessageService(serviceMessage, Integer.valueOf(args[1]), 1);
     // --------------------------------------------------------------------------
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
